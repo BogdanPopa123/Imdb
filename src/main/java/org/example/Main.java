@@ -10,7 +10,7 @@ public class Main {
         IMDB imdb = IMDB.getInstance();
         imdb.run();
 
-        List<User> users = imdb.getUsers();
+//        List<User> users = imdb.getUsers();
 //        for (User user : users){
 //            System.out.println(user.getUsername());
 //            System.out.println(user.getExperience());

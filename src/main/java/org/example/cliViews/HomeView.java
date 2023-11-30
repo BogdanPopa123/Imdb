@@ -1,10 +1,14 @@
 package org.example.cliViews;
 
-import org.example.LoggedUser;
+import org.example.*;
 import org.example.enums.AccountType;
+import org.example.enums.Genre;
 import org.example.exceptions.InvalidCommandException;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class HomeView {
 
@@ -52,7 +56,7 @@ public class HomeView {
             try{
                 validateAdminCommand(command);
                 if (command.equals("1")) {
-
+                    listProductions();
                 } else if (command.equals("2")) {
 
                 } else if (command.equals("3")) {
@@ -75,7 +79,8 @@ public class HomeView {
                     logout();
                 }
             }catch(InvalidCommandException e){
-
+                System.out.println("Invalid command : " + command);
+                System.out.println(e.getMessage());
             }
 
         }while(true);
@@ -114,7 +119,7 @@ public class HomeView {
                 //de admin pt ca are tot comenzi de la 1 la 11
                 validateAdminCommand(command);
                 if (command.equals("1")) {
-
+                    listProductions();
                 } else if (command.equals("2")) {
 
                 } else if (command.equals("3")) {
@@ -137,7 +142,8 @@ public class HomeView {
                     logout();
                 }
             }catch(InvalidCommandException e){
-
+                System.out.println("Invalid command : " + command);
+                System.out.println(e.getMessage());
             }
 
         }while(true);
@@ -172,7 +178,7 @@ public class HomeView {
             try{
                 validateRegularCommand(command);
                 if (command.equals("1")) {
-
+                    listProductions();
                 } else if (command.equals("2")) {
 
                 } else if (command.equals("3")) {
@@ -187,7 +193,8 @@ public class HomeView {
                     logout();
                 }
             }catch(InvalidCommandException e){
-
+                System.out.println("Invalid command : " + command);
+                System.out.println(e.getMessage());
             }
 
         }while(true);
@@ -226,5 +233,88 @@ public class HomeView {
         System.out.println("Logging you out. Please wait...");
         LoggedUser.setAnonymousUser();
         LoginView.show();
+    }
+
+    private static void listProductions(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("-------------------------------------" +
+                "Productions" + "-------------------------------------");
+
+        List<Production> productions = IMDB.getInstance().getProductions();
+        for(Production production : productions) {
+            String type = null;
+            if (production instanceof Movie) {
+                type = "Movie";
+            } else if (production instanceof Series) {
+                type = "Series";
+            }
+            System.out.println(production.getTitle() +
+                    " (" + type + ")");
+            System.out.println("    Directors:");
+            for (String director : production.getDirectors()){
+                System.out.println("        " + director);
+            }
+            System.out.println("    Actors:");
+            for (String actor : production.getActors()){
+                System.out.println("        " + actor);
+            }
+            System.out.println("    Genres:");
+            for (Genre genre : production.getGenres()){
+                System.out.println("        " + genre.toString());
+            }
+            System.out.println("    Ratings:");
+            for (Rating rating : production.getRatings()) {
+                System.out.println("        " + rating.getUsername());
+                System.out.println("            rated with: " +
+                        rating.getGrade());
+                System.out.println("            " + rating.getComment());
+                System.out.println();
+            }
+
+            System.out.println("    Plot: " + production.getDescription());
+            System.out.println("    Average rating: " +
+                    production.getAverageRating());
+
+            if (production instanceof Movie) {
+                Movie movie = (Movie) production;
+                System.out.println("    Release year: " +
+                        movie.getReleaseYear());
+                System.out.println("    Duration: " +
+                        movie.getRuntime());
+            } else if (production instanceof Series) {
+                Series series = (Series) production;
+                System.out.println("    Release year: " +
+                        series.getReleaseYear());
+                Map<String, List<Episode>> seasonEpisodes = series.getSeasonEpisodes();
+
+                seasonEpisodes.forEach((seasonName, episodes) ->{
+                    System.out.println("    " + seasonName);
+                    episodes.forEach(episode -> {
+                        System.out.println("        " + episode.getName());
+                        System.out.println("        " + episode.getRuntime());
+                        System.out.println();
+                    });
+                });
+
+            }
+
+            System.out.println();
+            System.out.println();
+
+        }
+        System.out.println("-------------------------------------" +
+                "Productions" + "-------------------------------------");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Press enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println();
+        System.out.println();
+        HomeView.show();
     }
 }
