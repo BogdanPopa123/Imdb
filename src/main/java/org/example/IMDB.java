@@ -1,6 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.core.JsonParser;
+import org.example.cliViews.InitialView;
 import org.example.enums.AccountType;
 import org.example.enums.Gender;
 import org.example.enums.Genre;
@@ -386,6 +387,9 @@ public class IMDB {
             loadActors();
             loadProductions();
             loadRequests();
+
+            LoggedUser.setAnonymousUser();
+            InitialView.show();
         }catch(Exception e) {
             e.printStackTrace();
         }

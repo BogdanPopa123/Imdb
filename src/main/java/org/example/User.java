@@ -150,7 +150,7 @@ public abstract class User {
                     age, gender, dateOfBirth);
         }
     }
-    class Information{
+    public class Information{
 
         public Information(Credentials credentials, String name,
                            String country, Integer age,

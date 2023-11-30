@@ -48,19 +48,19 @@ public class Main {
 //            System.out.println();
 //        }
 
-        List<Production> productions = imdb.getProductions();
-        for (Production p : productions) {
-            if (p instanceof Series) {
-                System.out.println(p.getTitle());
-                for (Map.Entry<String, List<Episode>> entry  : ((Series) p).getSeasonEpisodes().entrySet()) {
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue().toString());
-                }
-                System.out.println();
-                System.out.println();
-                System.out.println();
-            }
-        }
+//        List<Production> productions = imdb.getProductions();
+//        for (Production p : productions) {
+//            if (p instanceof Series) {
+//                System.out.println(p.getTitle());
+//                for (Map.Entry<String, List<Episode>> entry  : ((Series) p).getSeasonEpisodes().entrySet()) {
+//                    System.out.println(entry.getKey());
+//                    System.out.println(entry.getValue().toString());
+//                }
+//                System.out.println();
+//                System.out.println();
+//                System.out.println();
+//            }
+//        }
 
     }
 }

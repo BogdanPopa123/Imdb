@@ -138,7 +138,7 @@ public abstract class Production implements Comparable<Object>{
         this.author = author;
     }
 
-    private Double calculateAverageRating() {
+    public Double calculateAverageRating() {
         double sum = 0;
         int count = 0;
         for (Rating rating : ratings) {
