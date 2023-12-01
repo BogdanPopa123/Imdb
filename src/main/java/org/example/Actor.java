@@ -85,7 +85,7 @@ public class Actor implements Comparable{
         this.author = author;
     }
 
-    class Pair{
+    public class Pair{
 
         public Pair(String title, String type) {
             this.title = title;

@@ -58,13 +58,18 @@ public class HomeView {
                 if (command.equals("1")) {
                     listProductions();
                 } else if (command.equals("2")) {
-
+                    listActors();
                 } else if (command.equals("3")) {
-
+                    listNotifications();
                 } else if (command.equals("4")) {
-
+                    System.out.println();
+                    System.out.println();
+                    System.out.print("Enter the title of the " +
+                            "movie/series or the name of the actor: ");
+                    String input = scanner.nextLine();
+                    search(input);
                 } else if (command.equals("5")) {
-
+                    FavouritesView.show();
                 } else if (command.equals("6")) {
 
                 } else if (command.equals("7")) {
@@ -107,7 +112,7 @@ public class HomeView {
         System.out.println("    11)Logout");
 
         System.out.println();
-        System.out.print("Enter a command:");
+        System.out.print("Enter a command: ");
         String command;
 
         do{
@@ -121,13 +126,18 @@ public class HomeView {
                 if (command.equals("1")) {
                     listProductions();
                 } else if (command.equals("2")) {
-
+                    listActors();
                 } else if (command.equals("3")) {
-
+                    listNotifications();
                 } else if (command.equals("4")) {
-
+                    System.out.println();
+                    System.out.println();
+                    System.out.print("Enter the title of the " +
+                            "movie/series or the name of the actor: ");
+                    String input = scanner.nextLine();
+                    search(input);
                 } else if (command.equals("5")) {
-
+                    FavouritesView.show();
                 } else if (command.equals("6")) {
 
                 } else if (command.equals("7")) {
@@ -180,13 +190,18 @@ public class HomeView {
                 if (command.equals("1")) {
                     listProductions();
                 } else if (command.equals("2")) {
-
+                    listActors();
                 } else if (command.equals("3")) {
-
+                    listNotifications();
                 } else if (command.equals("4")) {
-
+                    System.out.println();
+                    System.out.println();
+                    System.out.print("Enter the title of the " +
+                            "movie/series or the name of the actor: ");
+                    String input = scanner.nextLine();
+                    search(input);
                 } else if (command.equals("5")) {
-
+                    FavouritesView.show();
                 } else if (command.equals("6")) {
 
                 } else if (command.equals("7")) {
@@ -199,11 +214,6 @@ public class HomeView {
 
         }while(true);
     }
-
-    private static void displayProductions(){
-
-    }
-
 
     private static void validateAdminCommand(String command)
             throws InvalidCommandException {
@@ -244,65 +254,7 @@ public class HomeView {
 
         List<Production> productions = IMDB.getInstance().getProductions();
         for(Production production : productions) {
-            String type = null;
-            if (production instanceof Movie) {
-                type = "Movie";
-            } else if (production instanceof Series) {
-                type = "Series";
-            }
-            System.out.println(production.getTitle() +
-                    " (" + type + ")");
-            System.out.println("    Directors:");
-            for (String director : production.getDirectors()){
-                System.out.println("        " + director);
-            }
-            System.out.println("    Actors:");
-            for (String actor : production.getActors()){
-                System.out.println("        " + actor);
-            }
-            System.out.println("    Genres:");
-            for (Genre genre : production.getGenres()){
-                System.out.println("        " + genre.toString());
-            }
-            System.out.println("    Ratings:");
-            for (Rating rating : production.getRatings()) {
-                System.out.println("        " + rating.getUsername());
-                System.out.println("            rated with: " +
-                        rating.getGrade());
-                System.out.println("            " + rating.getComment());
-                System.out.println();
-            }
-
-            System.out.println("    Plot: " + production.getDescription());
-            System.out.println("    Average rating: " +
-                    production.getAverageRating());
-
-            if (production instanceof Movie) {
-                Movie movie = (Movie) production;
-                System.out.println("    Release year: " +
-                        movie.getReleaseYear());
-                System.out.println("    Duration: " +
-                        movie.getRuntime());
-            } else if (production instanceof Series) {
-                Series series = (Series) production;
-                System.out.println("    Release year: " +
-                        series.getReleaseYear());
-                Map<String, List<Episode>> seasonEpisodes = series.getSeasonEpisodes();
-
-                seasonEpisodes.forEach((seasonName, episodes) ->{
-                    System.out.println("    " + seasonName);
-                    episodes.forEach(episode -> {
-                        System.out.println("        " + episode.getName());
-                        System.out.println("        " + episode.getRuntime());
-                        System.out.println();
-                    });
-                });
-
-            }
-
-            System.out.println();
-            System.out.println();
-
+            printOneProduction(production);
         }
         System.out.println("-------------------------------------" +
                 "Productions" + "-------------------------------------");
@@ -316,5 +268,214 @@ public class HomeView {
         System.out.println();
         System.out.println();
         HomeView.show();
+    }
+
+    private static void listActors(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("---------------------------------------" +
+                "Actors" + "---------------------------------------");
+
+        List<Actor> actors = IMDB.getInstance().getActors();
+        for (Actor actor : actors) {
+            printOneActor(actor);
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("---------------------------------------" +
+                "Actors" + "---------------------------------------");
+
+        System.out.println("Press enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println();
+        System.out.println();
+        HomeView.show();
+    }
+
+    private static void listNotifications() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("-------------------------------------" +
+                "Notifications" + "-------------------------------------");
+
+        System.out.println();
+
+        if (LoggedUser.currentUser.getNotifications().size() == 0) {
+            System.out.println("You currently have no notifications");
+            System.out.println();
+            return;
+        }
+
+        System.out.println("These are the notifications for the user:" +
+                LoggedUser.currentUser.getUsername());
+        System.out.println();
+        List<String> notifications = LoggedUser.currentUser.getNotifications();
+        for (String notification : notifications) {
+            System.out.println("    " + notification);
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("-------------------------------------" +
+                "Notifications" + "-------------------------------------");
+
+        System.out.println("Press enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println();
+        System.out.println();
+        HomeView.show();
+    }
+
+    private static void printOneProduction(Production production) {
+        String type = null;
+        if (production instanceof Movie) {
+            type = "Movie";
+        } else if (production instanceof Series) {
+            type = "Series";
+        }
+        System.out.println(production.getTitle() +
+                " (" + type + ")");
+        System.out.println("    Directors:");
+        for (String director : production.getDirectors()){
+            System.out.println("        " + director);
+        }
+        System.out.println("    Actors:");
+        for (String actor : production.getActors()){
+            System.out.println("        " + actor);
+        }
+        System.out.println("    Genres:");
+        for (Genre genre : production.getGenres()){
+            System.out.println("        " + genre.toString());
+        }
+        System.out.println("    Ratings:");
+        for (Rating rating : production.getRatings()) {
+            System.out.println("        " + rating.getUsername());
+            System.out.println("            rated with: " +
+                    rating.getGrade());
+            System.out.println("            " + rating.getComment());
+            System.out.println();
+        }
+
+        System.out.println("    Plot: " + production.getDescription());
+        System.out.println("    Average rating: " +
+                production.getAverageRating());
+
+        if (production instanceof Movie) {
+            Movie movie = (Movie) production;
+            System.out.println("    Release year: " +
+                    movie.getReleaseYear());
+            System.out.println("    Duration: " +
+                    movie.getRuntime());
+        } else if (production instanceof Series) {
+            Series series = (Series) production;
+            System.out.println("    Release year: " +
+                    series.getReleaseYear());
+            Map<String, List<Episode>> seasonEpisodes = series.getSeasonEpisodes();
+
+            seasonEpisodes.forEach((seasonName, episodes) ->{
+                System.out.println("    " + seasonName);
+                episodes.forEach(episode -> {
+                    System.out.println("        " + episode.getName());
+                    System.out.println("        " + episode.getRuntime());
+                    System.out.println();
+                });
+            });
+
+        }
+
+        System.out.println();
+        System.out.println();
+    }
+
+    private static void printOneActor(Actor actor){
+        System.out.println(actor.getName());
+        System.out.println("    Performances: ");
+        List<Actor.Pair> pairs = actor.getPerformances();
+        for (Actor.Pair pair : pairs) {
+            System.out.println("        " + pair.getTitle() +
+                    " (" + pair.getType() + ")\n");
+        }
+        System.out.println("    Biography: " +
+                actor.getBiography());
+        System.out.println();
+        System.out.println();
+    }
+
+    private static void search(String input) {
+
+        List<Production> productions = IMDB.getInstance().getProductions();
+        for (Production production : productions) {
+            if (production.getTitle().toLowerCase()
+                    .equals(input.toLowerCase())) {
+                System.out.println("Search result: ");
+                System.out.println();
+                System.out.println();
+                printOneProduction(production);
+
+                System.out.println("Press enter to continue...");
+                Scanner scanner = new Scanner(System.in);
+                scanner.nextLine();
+                System.out.println();
+                System.out.println();
+                HomeView.show();
+            }
+        }
+
+        List<Actor> actors = IMDB.getInstance().getActors();
+        for (Actor actor : actors) {
+            if (actor.getName().toLowerCase()
+                    .equals(input.toLowerCase())){
+                System.out.println("Search result: ");
+                System.out.println();
+                System.out.println();
+                printOneActor(actor);
+
+                System.out.println("Press enter to continue...");
+                Scanner scanner = new Scanner(System.in);
+                scanner.nextLine();
+                System.out.println();
+                System.out.println();
+                HomeView.show();
+            }
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println("No result found");
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Press enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println();
+        System.out.println();
+        HomeView.show();
+    }
+
+    public static Object fetch(String input) {
+        List<Production> productions = IMDB.getInstance().getProductions();
+        for (Production production : productions) {
+            if (production.getTitle().toLowerCase()
+                    .equals(input.toLowerCase())) {
+                return production;
+            }
+        }
+
+        List<Actor> actors = IMDB.getInstance().getActors();
+        for (Actor actor : actors) {
+            if (actor.getName().toLowerCase()
+                    .equals(input.toLowerCase())) {
+                return actor;
+            }
+        }
+
+        return null;
     }
 }

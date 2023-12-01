@@ -1,6 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.core.JsonParser;
+import org.example.cliViews.HomeView;
 import org.example.cliViews.InitialView;
 import org.example.enums.AccountType;
 import org.example.enums.Gender;
@@ -381,12 +382,29 @@ public class IMDB {
 //            System.out.println(title);
         }
     }
+
+    //firstly, the favourites are saved as strings, then they are
+    //updated as objects corresponding to those strings
+    private void updateFavourites() {
+        for (User user : users) {
+            SortedSet<Object> favourites = user.getFavourites();
+            SortedSet<Object> newList = new TreeSet<>();
+            for (Object object :  favourites) {
+                Object fetchedFav = HomeView.fetch((String) object);
+                newList.add(fetchedFav);
+            }
+            user.setFavourites(newList);
+        }
+
+    }
+
     public void run(){
         try{
             loadUsers();
             loadActors();
             loadProductions();
             loadRequests();
+            updateFavourites();
 
             LoggedUser.setAnonymousUser();
             InitialView.show();
