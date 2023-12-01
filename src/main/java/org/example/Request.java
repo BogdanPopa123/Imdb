@@ -76,7 +76,7 @@ public class Request{
         this.solverUsername = solverUsername;
     }
 
-    static class RequestManager {
+    public static class RequestManager {
         static private List<Request> adminTeamRequests = new ArrayList<>();
 
         public static void addRequest(Request r) {

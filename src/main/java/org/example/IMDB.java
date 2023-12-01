@@ -269,7 +269,7 @@ public class IMDB {
             //requestul in lista tuturor adminilor
             if (toUsername.equals("ADMIN")) {
                 Request.RequestManager.addRequest(request);
-            } else { //in cazul else baam requestul userului adecvat
+            } else { //in cazul else bagam requestul userului adecvat
                 //facem acest lucru iterand toti userii pana il gasim
                 //pe cel care il cautam
                 for (User user : users) {

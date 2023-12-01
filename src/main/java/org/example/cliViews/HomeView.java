@@ -107,7 +107,7 @@ public class HomeView {
         System.out.println("    6)Add/delete actor/movie/series from system");
         System.out.println("    7)Update movie details");
         System.out.println("    8)Update actor details");
-        System.out.println("    9)Create a request");
+        System.out.println("    9)Create/remove a request");
         System.out.println("    10)Solve a request");
         System.out.println("    11)Logout");
 
@@ -145,7 +145,7 @@ public class HomeView {
                 } else if (command.equals("8")) {
 
                 } else if (command.equals("9")) {
-
+                    RequestsView.show();
                 } else if (command.equals("10")) {
 
                 } else if (command.equals("11")) {
@@ -174,7 +174,7 @@ public class HomeView {
         System.out.println("    3)View notifications");
         System.out.println("    4)Search for actor/movie/series");
         System.out.println("    5)Add/delete actor/movie/series  to/from favourites");
-        System.out.println("    6)Create a request");
+        System.out.println("    6)Create/remove a request");
         System.out.println("    7)Logout");
 
         System.out.println();
@@ -203,7 +203,7 @@ public class HomeView {
                 } else if (command.equals("5")) {
                     FavouritesView.show();
                 } else if (command.equals("6")) {
-
+                    RequestsView.show();
                 } else if (command.equals("7")) {
                     logout();
                 }

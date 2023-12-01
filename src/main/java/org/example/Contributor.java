@@ -21,7 +21,22 @@ public class Contributor extends Staff implements RequestsManager{
     }
 
     @Override
-    public void removeRequest(Request r) {
-        //TODO
+    public void removeRequest(Request request) {
+        for (Request r : Request.RequestManager.getAdminTeamRequests()) {
+            if(request.equals(r)) {
+                Request.RequestManager.getAdminTeamRequests().remove(r);
+            }
+        }
+
+        for (User user : IMDB.getInstance().getUsers()){
+            if (user instanceof Staff) {
+                Staff staff = (Staff) user;
+                for (Request r : staff.getRequests()) {
+                    if (request.equals(r)){
+                        staff.getRequests().remove(request);
+                    }
+                }
+            }
+        }
     }
 }
