@@ -14,6 +14,15 @@ public enum Genre {
     Crime,
     Biography,
     War,
-    Cooking
+    Cooking;
+
+    public static Genre fromString(String genreString) {
+        for (Genre genre : Genre.values()) {
+            if (genre.name().equals(genreString)) {
+                return genre;
+            }
+        }
+        return null; // or throw an exception if needed
+    }
 
 }

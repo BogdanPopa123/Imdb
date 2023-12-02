@@ -77,7 +77,7 @@ public class RequestsView {
             try{
                 validateCommand(command);
                 if (command.equals("1")) {
-
+                    addRequest();
                 } else if (command.equals("2")) {
                     removeRequest();
                 } else if (command.equals("3")) {
@@ -128,6 +128,9 @@ public class RequestsView {
                     to = fetched.getAuthor();
                     subject = fetched.getTitle();
                 }
+                if (to == null) {
+                    to = "ADMIN";
+                }
                 from = LoggedUser.currentUser.getUsername();
                 System.out.println("Describe your problem: ");
                 description = scanner.nextLine();
@@ -139,14 +142,55 @@ public class RequestsView {
                 if (LoggedUser.currentUser instanceof Regular){
                     Regular regular = (Regular) LoggedUser.currentUser;
                     regular.createRequest(request);
+                    RequestsView.requestList.add(request);
+                    System.out.println("Request created successfully");
+                    RequestsView.showMenu();
                 } else if (LoggedUser.currentUser instanceof Contributor) {
                     Contributor contributor = (Contributor) LoggedUser.currentUser;
                     contributor.createRequest(request);
+                    RequestsView.requestList.add(request);
+                    System.out.println("Request created successfully");
+                    RequestsView.showMenu();
                 }
             }
         } else {
             //daca comanda este NULL inseamna ca userul doreste
             //fie sa faca DELETE_REQUEST sau OTHER REQUEST
+            System.out.println();
+            System.out.println("If you wish to delete your account " +
+                    "press Enter.");
+            System.out.println("If you wish to create other kind of " +
+                    "request, type anything and then press Enter.");
+
+            String secondCommand = scanner.nextLine();
+            if (secondCommand.equals("")) {
+                //cerere de delete account
+                type = RequestType.DELETE_ACCOUNT;
+            } else {
+                type = RequestType.OTHERS;
+            }
+                System.out.print("Describe your problem: ");
+                description = scanner.nextLine();
+                subject = null;
+                from = LoggedUser.currentUser.getUsername();
+                to = "ADMIN";
+                creationTime = LocalDateTime.now();
+                Request request = new Request(type, creationTime,
+                        subject, description, from, to);
+
+                if (LoggedUser.currentUser instanceof Regular){
+                    Regular regular = (Regular) LoggedUser.currentUser;
+                    regular.createRequest(request);
+                    RequestsView.requestList.add(request);
+                    System.out.println("Request created successfully");
+                    RequestsView.showMenu();
+                } else if (LoggedUser.currentUser instanceof Contributor) {
+                    Contributor contributor = (Contributor) LoggedUser.currentUser;
+                    contributor.createRequest(request);
+                    RequestsView.requestList.add(request);
+                    System.out.println("Request created successfully");
+                    RequestsView.showMenu();
+                }
         }
     }
 

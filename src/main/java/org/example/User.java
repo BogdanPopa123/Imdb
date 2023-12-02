@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.SortedSet;
 
-public abstract class User {
+public abstract class User implements Observer {
 
     public User(Information information, AccountType accountType,
                 String username, Integer experience,
@@ -29,6 +29,27 @@ public abstract class User {
     private SortedSet<Object> favourites;
 
 
+    public void registerAsObserver(Request request) {
+        request.registerObserver(this);
+    }
+
+    public void unregisterAsObserver(Request request) {
+        request.removeObserver(this);
+    }
+
+    @Override
+    public void update(Subject subject) {
+        if (subject instanceof Request) {
+            Request request = (Request) subject;
+            String notification = "New request\n" +
+                    "    Created at: " + request.getCreationTime().toString() +
+                    "\n    Type: " + request.getRequestType().toString() +
+                    "\n    From: " + request.getIssuerUsername() +
+                    "\n    Subject: " + request.getSubject() +
+                    "\n    Description: " + request.getDescription();
+            this.getNotifications().add(notification);
+        }
+    }
 
     public void addToFavourites(Object o) {
         if (o == null) {

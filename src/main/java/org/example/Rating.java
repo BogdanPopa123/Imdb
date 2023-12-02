@@ -3,7 +3,6 @@ package org.example;
 public class Rating {
 
     public Rating(String username, Integer grade, String comment) {
-        //TODO throw exception(to be created) if username's role is not REGULAR
         this.username = username;
         this.grade = grade;
         this.comment = comment;

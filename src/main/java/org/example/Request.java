@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Request{
+public class Request implements Subject{
 
     public Request(RequestType requestType, LocalDateTime creationTime,
                    String subject, String description,
@@ -27,6 +27,25 @@ public class Request{
     private String description;
     private String issuerUsername;
     private String solverUsername;
+
+    private List<User> observers = new ArrayList<>();
+
+    @Override
+    public void registerObserver(User observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(User observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (User obserber : observers) {
+            obserber.update(this);
+        }
+    }
 
     public RequestType getRequestType() {
         return requestType;

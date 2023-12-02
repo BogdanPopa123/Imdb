@@ -73,7 +73,7 @@ public class HomeView {
                 } else if (command.equals("6")) {
 
                 } else if (command.equals("7")) {
-
+                    AddDeleteProdActor.show();
                 } else if (command.equals("8")) {
 
                 } else if (command.equals("9")) {
@@ -139,7 +139,7 @@ public class HomeView {
                 } else if (command.equals("5")) {
                     FavouritesView.show();
                 } else if (command.equals("6")) {
-
+                    AddDeleteProdActor.show();
                 } else if (command.equals("7")) {
 
                 } else if (command.equals("8")) {
@@ -175,7 +175,8 @@ public class HomeView {
         System.out.println("    4)Search for actor/movie/series");
         System.out.println("    5)Add/delete actor/movie/series  to/from favourites");
         System.out.println("    6)Create/remove a request");
-        System.out.println("    7)Logout");
+        System.out.println("    7)Add a review for an actor/production");
+        System.out.println("    8)Logout");
 
         System.out.println();
         System.out.print("Enter a command:");
@@ -205,6 +206,8 @@ public class HomeView {
                 } else if (command.equals("6")) {
                     RequestsView.show();
                 } else if (command.equals("7")) {
+//                    logout();
+                } else if (command.equals("8")) {
                     logout();
                 }
             }catch(InvalidCommandException e){
@@ -233,9 +236,9 @@ public class HomeView {
         if ( !command.equals("1") && !command.equals("2")
                 && !command.equals("3") && !command.equals("4")
                 && !command.equals("5") && !command.equals("6")
-                && !command.equals("7")) {
+                && !command.equals("7") && !command.equals("8")) {
             throw new InvalidCommandException("Please enter a valid command.\n" +
-                    "Choose an integer in range 1 - 7");
+                    "Choose an integer in range 1 - 8");
         }
     }
 

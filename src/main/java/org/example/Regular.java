@@ -15,8 +15,28 @@ public class Regular extends User implements RequestsManager{
     }
 
     @Override
-    public void createRequest(Request r) {
-        //TODO
+    public void createRequest(Request request) {
+        String to = request.getSolverUsername();
+        if (to.equals("ADMIN")) {
+            for (User user : IMDB.getInstance().getUsers()) {
+                if (user.getAccountType().equals(AccountType.ADMIN)) {
+                    request.registerObserver(user);
+                }
+            }
+            Request.RequestManager.addRequest(request);
+        } else {
+            for (User user : IMDB.getInstance().getUsers()) {
+                if (user.getUsername().equals(to)) {
+                    if (user instanceof Staff) {
+                        Staff staff = (Staff) user;
+                        request.registerObserver(staff);
+                        staff.addRequest(request);
+                    }
+                }
+            }
+        }
+        request.notifyObservers();
+        IMDB.getInstance().getRequests().add(request);
     }
 
     @Override
@@ -24,6 +44,8 @@ public class Regular extends User implements RequestsManager{
         for (Request r : Request.RequestManager.getAdminTeamRequests()) {
             if(request.equals(r)) {
                 Request.RequestManager.getAdminTeamRequests().remove(r);
+                IMDB.getInstance().getRequests().remove(request);
+                return;
             }
         }
 
@@ -33,6 +55,8 @@ public class Regular extends User implements RequestsManager{
                 for (Request r : staff.getRequests()) {
                     if (request.equals(r)){
                         staff.getRequests().remove(request);
+                        IMDB.getInstance().getRequests().remove(request);
+                        return;
                     }
                 }
             }
