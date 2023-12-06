@@ -332,7 +332,7 @@ public class IMDB {
                     if (user.getUsername().equals(username)){
                         if (user.getAccountType().equals(AccountType.REGULAR)) {
                             Rating userRating = new Rating(username,
-                                    rating, comment);
+                                    rating, comment, title);
                             ratings.add(userRating);
                         }
                     }

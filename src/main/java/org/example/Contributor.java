@@ -36,7 +36,15 @@ public class Contributor extends Staff implements RequestsManager{
                 }
             }
         }
-        request.notifyObservers();
+
+        String notification = "New request\n" +
+                "    Created at: " + request.getCreationTime().toString() +
+                "\n    Type: " + request.getRequestType().toString() +
+                "\n    From: " + request.getIssuerUsername() +
+                "\n    Subject: " + request.getSubject() +
+                "\n    Description: " + request.getDescription();
+
+        request.notifyObservers(notification);
         IMDB.getInstance().getRequests().add(request);
     }
 

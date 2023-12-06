@@ -1,7 +1,9 @@
 package org.example;
 
+import org.example.cliViews.HomeView;
 import org.example.enums.AccountType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -35,7 +37,15 @@ public class Regular extends User implements RequestsManager{
                 }
             }
         }
-        request.notifyObservers();
+
+        String notification = "New request\n" +
+                    "    Created at: " + request.getCreationTime().toString() +
+                    "\n    Type: " + request.getRequestType().toString() +
+                    "\n    From: " + request.getIssuerUsername() +
+                    "\n    Subject: " + request.getSubject() +
+                    "\n    Description: " + request.getDescription();
+
+        request.notifyObservers(notification);
         IMDB.getInstance().getRequests().add(request);
     }
 
@@ -63,7 +73,58 @@ public class Regular extends User implements RequestsManager{
         }
     }
 
-    public void createRating() {
+    public void createRatingProduction(Rating rating) {
+        Object object = HomeView.fetch(rating.getSubject());
+
+        Production production = (Production) object;
+
+        production.addRating(rating);
+
+        User prodAuthor = null;
+        User ratingAuthor = null;
+        for (User user : IMDB.getInstance().getUsers()) {
+            if (user.getUsername().equals(production.getAuthor())) {
+                prodAuthor = user;
+            }
+            if (user.getUsername().equals(rating.getUsername())) {
+                ratingAuthor = user;
+            }
+        }
+
+        List<User> otherRaters = new ArrayList<>();
+        for (Rating rating1 : production.getRatings()){
+            String username = rating1.getUsername();
+            for (User user : IMDB.getInstance().getUsers()) {
+                if (user.getUsername().equals(username)
+                && user != ratingAuthor) {
+                    otherRaters.add(user);
+                }
+            }
+        }
+
+        rating.removeAllObservers();
+
+        if (prodAuthor != null) {
+            rating.registerObserver(prodAuthor);
+        }
+//        rating.registerObserver(ratingAuthor);
+
+        for (User user : otherRaters) {
+            rating.registerObserver(user);
+        }
+
+        //nu vreau ca cel care a creeat requestul sa primeasca
+        //notificarea
+        rating.removeObserver(ratingAuthor);
+
+        String notification = "The production " + production.getTitle() +
+                " has been recently rated by " + rating.getUsername() +
+                " with " + rating.getGrade() + ": \"" +
+                rating.getComment() + "\" ";
+        rating.notifyObservers(notification);
+    }
+
+    public void createRatingActor(Rating rating) {
         //TODO
     }
 }

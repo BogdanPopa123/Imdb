@@ -22,7 +22,7 @@ public enum Genre {
                 return genre;
             }
         }
-        return null; // or throw an exception if needed
+        return null;
     }
 
 }

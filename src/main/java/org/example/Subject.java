@@ -5,5 +5,7 @@ public interface Subject {
 
     void removeObserver(User observer);
 
-    void notifyObservers();
+    void removeAllObservers();
+
+    void notifyObservers(String message);
 }

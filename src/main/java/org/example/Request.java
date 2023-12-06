@@ -41,9 +41,14 @@ public class Request implements Subject{
     }
 
     @Override
-    public void notifyObservers() {
-        for (User obserber : observers) {
-            obserber.update(this);
+    public void removeAllObservers() {
+        observers.clear();
+    }
+
+    @Override
+    public void notifyObservers(String message) {
+        for (User observer : observers) {
+            observer.update(this, message);
         }
     }
 

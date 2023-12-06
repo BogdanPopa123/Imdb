@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.cliViews.HomeView;
+import org.example.cliViews.SolveRequestsView;
 import org.example.enums.AccountType;
 
 import java.util.List;
@@ -120,15 +121,104 @@ public abstract class Staff extends User implements StaffInterface{
 
     @Override
     public void updateProductionSystem(Production p) {
-        //TODO
+        for (Production production : IMDB.getInstance().getProductions()) {
+            if (production.getTitle().equals(p.getTitle())) {
+                production.setActors(p.getActors());
+                production.setDescription(p.getDescription());
+                production.setDirectors(p.getDirectors());
+                production.setGenres(p.getGenres());
+
+                if (p instanceof Movie) {
+                    Movie movie = (Movie) production;
+                    Movie m = (Movie) p;
+                    movie.setRuntime(m.getRuntime());
+                    movie.setReleaseYear(m.getReleaseYear());
+                } else if (p instanceof Series) {
+                    Series series = (Series) production;
+                    Series s = (Series) p;
+                    series.setReleaseYear(s.getReleaseYear());
+                    series.setSeasonEpisodes(s.getSeasonEpisodes());
+                }
+            }
+        }
     }
 
     @Override
     public void updateActor(Actor a) {
-        //TODO
+        for (Actor actor : IMDB.getInstance().getActors()) {
+            if (actor.getName().equals(a.getName())) {
+                actor.setBiography(a.getBiography());
+                actor.setPerformances(a.getPerformances());
+            }
+        }
     }
 
-    public void solveRequest() {
-        //TODO
+    public void solveRequest(Request request) {
+        SolveRequestsView.requestList.remove(request);
+        if (request.getSolverUsername().equals("ADMIN")) {
+            Request.RequestManager.getAdminTeamRequests().remove(request);
+        } else {
+            Staff staff = (Staff) LoggedUser.currentUser;
+            staff.getRequests().remove(request);
+        }
+        IMDB.getInstance().getRequests().remove(request);
+
+
+        request.removeAllObservers();
+
+        User author = null;
+        for (User user : IMDB.getInstance().getUsers()) {
+            if (user.getUsername().equals(request.getIssuerUsername())) {
+                author = user;
+                break;
+            }
+        }
+
+        //inregistram ca observer pe creatorul requestului
+        request.registerObserver(author);
+
+        String notification = "Your request\n" +
+                "    Created at: " + request.getCreationTime().toString() +
+                "\n    Type: " + request.getRequestType().toString() +
+                "\n    Subject: " + request.getSubject() +
+                "\n    Description: " + request.getDescription() +
+                "\n Has been successfully solved!";
+
+        request.notifyObservers(notification);
+    }
+
+    public void denyRequest(Request request) {
+        SolveRequestsView.requestList.remove(request);
+        if (request.getSolverUsername().equals("ADMIN")) {
+            Request.RequestManager.getAdminTeamRequests().remove(request);
+        } else {
+            Staff staff = (Staff) LoggedUser.currentUser;
+            staff.getRequests().remove(request);
+        }
+        IMDB.getInstance().getRequests().remove(request);
+
+
+        request.removeAllObservers();
+
+        User author = null;
+        for (User user : IMDB.getInstance().getUsers()) {
+            if (user.getUsername().equals(request.getIssuerUsername())) {
+                author = user;
+                break;
+            }
+        }
+
+        //inregistram ca observer pe creatorul requestului
+        request.registerObserver(author);
+
+        String notification = "Your request\n" +
+                "    Created at: " + request.getCreationTime().toString() +
+                "\n    Type: " + request.getRequestType().toString() +
+                "\n    Subject: " + request.getSubject() +
+                "\n    Description: " + request.getDescription() +
+                "\n Has been denied!";
+
+        request.notifyObservers(notification);
+    //}
     }
 }

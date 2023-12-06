@@ -40,7 +40,7 @@ public class HomeView {
         System.out.println("    5)Add/delete actor/movie/series  to/from favourites");
         System.out.println("    6)Add/delete user");
         System.out.println("    7)Add/delete actor/movie/series from system");
-        System.out.println("    8)Update movie details");
+        System.out.println("    8)Update movie/series details");
         System.out.println("    9)Update actor details");
         System.out.println("    10)Solve a request");
         System.out.println("    11)Logout");
@@ -71,15 +71,15 @@ public class HomeView {
                 } else if (command.equals("5")) {
                     FavouritesView.show();
                 } else if (command.equals("6")) {
-
+                    AddDeleteUserView.show();
                 } else if (command.equals("7")) {
                     AddDeleteProdActor.show();
                 } else if (command.equals("8")) {
-
+                    UpdateProduction.show();
                 } else if (command.equals("9")) {
-
+                    UpdateActor.show();
                 } else if (command.equals("10")) {
-
+                    SolveRequestsView.show();
                 } else if (command.equals("11")) {
                     logout();
                 }
@@ -105,7 +105,7 @@ public class HomeView {
         System.out.println("    4)Search for actor/movie/series");
         System.out.println("    5)Add/delete actor/movie/series  to/from favourites");
         System.out.println("    6)Add/delete actor/movie/series from system");
-        System.out.println("    7)Update movie details");
+        System.out.println("    7)Update movie/series details");
         System.out.println("    8)Update actor details");
         System.out.println("    9)Create/remove a request");
         System.out.println("    10)Solve a request");
@@ -141,13 +141,13 @@ public class HomeView {
                 } else if (command.equals("6")) {
                     AddDeleteProdActor.show();
                 } else if (command.equals("7")) {
-
+                    UpdateProduction.show();
                 } else if (command.equals("8")) {
-
+                    UpdateActor.show();
                 } else if (command.equals("9")) {
                     RequestsView.show();
                 } else if (command.equals("10")) {
-
+                    SolveRequestsView.show();
                 } else if (command.equals("11")) {
                     logout();
                 }
@@ -206,7 +206,7 @@ public class HomeView {
                 } else if (command.equals("6")) {
                     RequestsView.show();
                 } else if (command.equals("7")) {
-//                    logout();
+                    AddRatingView.show();
                 } else if (command.equals("8")) {
                     logout();
                 }
