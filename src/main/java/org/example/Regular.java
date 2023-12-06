@@ -1,7 +1,9 @@
 package org.example;
 
 import org.example.cliViews.HomeView;
+import org.example.cliViews.LoginView;
 import org.example.enums.AccountType;
+import org.example.strategies.RatingExperienceStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,9 +124,73 @@ public class Regular extends User implements RequestsManager{
                 " with " + rating.getGrade() + ": \"" +
                 rating.getComment() + "\" ";
         rating.notifyObservers(notification);
+
+        //userului care a adaugat recenzia ii crestem experienta
+        if (!(LoggedUser.currentUser instanceof Admin)) {
+            LoggedUser.currentUser.setExperienceStrategy(
+                    new RatingExperienceStrategy());
+            int newExperince = LoggedUser.currentUser
+                    .calculateIncrementedExperience();
+            LoggedUser.currentUser.setExperience(newExperince);
+        }
     }
 
     public void createRatingActor(Rating rating) {
-        //TODO
+        Object object = HomeView.fetch(rating.getSubject());
+
+        Actor actor = (Actor) object;
+
+        actor.addRating(rating);
+
+        User actorAuthor = null;
+        User ratingAuthor = null;
+        for (User user : IMDB.getInstance().getUsers()) {
+            if (user.getUsername().equals(actor.getAuthor())) {
+                actorAuthor = user;
+            }
+            if (user.getUsername().equals(rating.getUsername())) {
+                ratingAuthor = user;
+            }
+        }
+
+        List<User> otherRaters = new ArrayList<>();
+        for (Rating rating1 : actor.getRatings()){
+            String username = rating1.getUsername();
+            for (User user : IMDB.getInstance().getUsers()) {
+                if (user.getUsername().equals(username)
+                        && user != ratingAuthor) {
+                    otherRaters.add(user);
+                }
+            }
+        }
+
+        rating.removeAllObservers();
+
+        if (actorAuthor != null) {
+            rating.registerObserver(actorAuthor);
+        }
+//        rating.registerObserver(ratingAuthor);
+
+        for (User user : otherRaters) {
+            rating.registerObserver(user);
+        }
+
+        //nu vreau ca cel care a creeat requestul sa primeasca
+        //notificarea
+        rating.removeObserver(ratingAuthor);
+
+        String notification = "The actor " + actor.getName() +
+                " has been recently rated by " + rating.getUsername() +
+                " with " + rating.getGrade() + ": \"" +
+                rating.getComment() + "\" ";
+        rating.notifyObservers(notification);
+
+        if (!(LoggedUser.currentUser instanceof Admin)) {
+            LoggedUser.currentUser.setExperienceStrategy(
+                    new RatingExperienceStrategy());
+            int newExperince = LoggedUser.currentUser
+                    .calculateIncrementedExperience();
+            LoggedUser.currentUser.setExperience(newExperince);
+        }
     }
 }

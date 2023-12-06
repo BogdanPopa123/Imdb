@@ -12,6 +12,8 @@ public class Actor implements Comparable{
         this.performances = performances;
         this.biography = biography;
         this.author = null;
+        this.ratings = new ArrayList<>();
+        this.averageRating = 0.0;
     }
 
     public Actor(String name, List<Pair> performances,
@@ -20,12 +22,18 @@ public class Actor implements Comparable{
         this.performances = performances;
         this.biography = biography;
         this.author = author;
+        this.ratings = new ArrayList<>();
+        this.averageRating = 0.0;
     }
 
     private String name;
     private List<Pair> performances;
     private String biography;
     private String author;
+
+    private List<Rating> ratings;
+
+    private Double averageRating;
 
     @Override
     public int compareTo(Object o) {
@@ -83,6 +91,40 @@ public class Actor implements Comparable{
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public Double calculateAverageRating() {
+        double sum = 0;
+        int count = 0;
+        for (Rating rating : ratings) {
+            sum = sum + rating.getGrade();
+            count = count + 1;
+        }
+        if (count == 0) {
+            return 0.0;
+        }
+        return sum/count;
+    }
+
+    public void addRating(Rating r) {
+        ratings.add(r);
+        this.setAverageRating(calculateAverageRating());
     }
 
     public class Pair{

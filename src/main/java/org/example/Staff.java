@@ -3,6 +3,11 @@ package org.example;
 import org.example.cliViews.HomeView;
 import org.example.cliViews.SolveRequestsView;
 import org.example.enums.AccountType;
+import org.example.enums.RequestType;
+import org.example.strategies.ActorAddedExperienceStrategy;
+import org.example.strategies.ProductionAddedExperienceStrategy;
+import org.example.strategies.RatingExperienceStrategy;
+import org.example.strategies.RequestSolvedExperienceStrategy;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -52,6 +57,14 @@ public abstract class Staff extends User implements StaffInterface{
             Staff staff = (Staff) LoggedUser.currentUser;
             staff.addedObjects.add(p.getTitle());
         }
+
+        if (LoggedUser.currentUser instanceof Contributor) {
+            LoggedUser.currentUser.setExperienceStrategy(
+                    new ProductionAddedExperienceStrategy());
+            int newExperince = LoggedUser.currentUser
+                    .calculateIncrementedExperience();
+            LoggedUser.currentUser.setExperience(newExperince);
+        }
     }
 
     @Override
@@ -60,6 +73,14 @@ public abstract class Staff extends User implements StaffInterface{
         if (LoggedUser.currentUser instanceof Staff) {
             Staff staff = (Staff) LoggedUser.currentUser;
             staff.addedObjects.add(a.getName());
+        }
+
+        if (LoggedUser.currentUser instanceof Contributor) {
+            LoggedUser.currentUser.setExperienceStrategy(
+                    new ActorAddedExperienceStrategy());
+            int newExperince = LoggedUser.currentUser
+                    .calculateIncrementedExperience();
+            LoggedUser.currentUser.setExperience(newExperince);
         }
     }
 
@@ -185,6 +206,14 @@ public abstract class Staff extends User implements StaffInterface{
                 "\n Has been successfully solved!";
 
         request.notifyObservers(notification);
+
+        if (request.getRequestType().equals(RequestType.ACTOR_ISSUE)
+            || request.getRequestType().equals(RequestType.MOVIE_ISSUE)) {
+
+            author.setExperienceStrategy(new RequestSolvedExperienceStrategy());
+            int newExperince = author.calculateIncrementedExperience();
+            author.setExperience(newExperince);
+        }
     }
 
     public void denyRequest(Request request) {

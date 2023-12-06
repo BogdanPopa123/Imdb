@@ -28,6 +28,19 @@ public abstract class User implements Observer {
     private List<String> notifications;
     private SortedSet<Object> favourites;
 
+    private ExperienceStrategy experienceStrategy;
+
+    public void setExperienceStrategy(ExperienceStrategy strategy) {
+        this.experienceStrategy = strategy;
+    }
+
+    public int calculateIncrementedExperience(){
+        if (experienceStrategy != null) {
+            return experienceStrategy.calculateExperience(this.getUsername());
+        }
+        return -1;
+    }
+
 
     public void registerAsObserver(Request request) {
         request.registerObserver(this);

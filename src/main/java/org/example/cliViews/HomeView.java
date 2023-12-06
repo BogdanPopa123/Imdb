@@ -408,6 +408,15 @@ public class HomeView {
         System.out.println("    Biography: " +
                 actor.getBiography());
         System.out.println();
+        System.out.println("    Ratings:");
+        for (Rating rating : actor.getRatings()) {
+            System.out.println("        " + rating.getUsername());
+            System.out.println("            rated with: " +
+                    rating.getGrade());
+            System.out.println("            " + rating.getComment());
+            System.out.println();
+        }
+        System.out.println();
         System.out.println();
     }
 
