@@ -1,6 +1,7 @@
 package org.example.cliViews;
 
 import org.example.exceptions.InvalidCommandException;
+import org.example.guiViews.LoginViewGUI;
 
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class InitialView {
                     LoginView.show();
                 } else if (command.equals("2")) {
                     //TODO begin GUI SWING
+                    new LoginViewGUI();
                 }
             }catch (InvalidCommandException e) {
                 System.out.println("Invalid command : " + command);
