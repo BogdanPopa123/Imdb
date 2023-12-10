@@ -7,23 +7,26 @@ import java.util.List;
 
 public class Actor implements Comparable{
 
-    public Actor(String name, List<Pair> performances, String biography) {
+    public Actor(String name, List<Pair> performances, String biography,
+                 String imageUrl) {
         this.name = name;
         this.performances = performances;
         this.biography = biography;
         this.author = null;
         this.ratings = new ArrayList<>();
         this.averageRating = 0.0;
+        this.imageUrl = imageUrl;
     }
 
     public Actor(String name, List<Pair> performances,
-                 String biography, String author) {
+                 String biography, String author, String imageUrl) {
         this.name = name;
         this.performances = performances;
         this.biography = biography;
         this.author = author;
         this.ratings = new ArrayList<>();
         this.averageRating = 0.0;
+        this.imageUrl = imageUrl;
     }
 
     private String name;
@@ -34,6 +37,8 @@ public class Actor implements Comparable{
     private List<Rating> ratings;
 
     private Double averageRating;
+
+    private String imageUrl;
 
     @Override
     public int compareTo(Object o) {
@@ -99,6 +104,14 @@ public class Actor implements Comparable{
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Double getAverageRating() {

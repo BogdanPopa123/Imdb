@@ -10,7 +10,7 @@ public abstract class Production implements Comparable<Object>{
 
     public Production(String title, List<String> directors,
                       List<String> actors, List<Genre> genres,
-                      List<Rating> ratings, String description) {
+                      List<Rating> ratings, String description, String imageUrl) {
         this.title = title;
         this.directors = directors;
         this.actors = actors;
@@ -18,12 +18,13 @@ public abstract class Production implements Comparable<Object>{
         this.ratings = ratings;
         this.description = description;
         this.author = null;
+        this.imageUrl = imageUrl;
     }
 
     public Production(String title, List<String> directors,
                       List<String> actors, List<Genre> genres,
                       List<Rating> ratings, String description,
-                      String author) {
+                      String author, String imageUrl) {
         this.title = title;
         this.directors = directors;
         this.actors = actors;
@@ -31,12 +32,13 @@ public abstract class Production implements Comparable<Object>{
         this.ratings = ratings;
         this.description = description;
         this.author = author;
+        this.imageUrl = imageUrl;
     }
 
     public Production(String title, List<String> directors,
                       List<String> actors, List<Genre> genres,
                       List<Rating> ratings, String description,
-                      Double averageRating, String author) {
+                      Double averageRating, String author, String imageUrl) {
         this.title = title;
         this.directors = directors;
         this.actors = actors;
@@ -45,6 +47,7 @@ public abstract class Production implements Comparable<Object>{
         this.description = description;
         this.averageRating = averageRating;
         this.author = author;
+        this.imageUrl = imageUrl;
     }
 
     private String title;
@@ -56,6 +59,8 @@ public abstract class Production implements Comparable<Object>{
     private Double averageRating;
 
     private String author;
+
+    private String imageUrl;
 
     public abstract void displayInfo();
 
@@ -132,6 +137,14 @@ public abstract class Production implements Comparable<Object>{
 
     public String getAuthor() {
         return author;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setAuthor(String author) {

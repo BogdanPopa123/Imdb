@@ -195,12 +195,14 @@ public class IMDB {
         for (int i = 0; i < array.size(); i++) {
             JSONObject actorJson = (JSONObject) array.get(i);
             String actorName = (String) actorJson.get("name");
+            String imageUrl = (String) actorJson.get("imageUrl");
             String actorBiography = (String) actorJson.get("biography");
             JSONArray performancesJson = (JSONArray) actorJson
                     .get("performances");
             List<Actor.Pair> performances = new ArrayList<>();
 
-            Actor actor = new Actor(actorName, performances, actorBiography);
+            Actor actor = new Actor(actorName, performances,
+                    actorBiography, imageUrl);
 
             for (int j = 0; j < performancesJson.size(); j++){
                 JSONObject performance = (JSONObject) performancesJson.get(j);
@@ -296,6 +298,7 @@ public class IMDB {
             JSONObject productionJson = (JSONObject) array.get(i);
             String title = (String) productionJson.get("title");
             String type = (String) productionJson.get("type");
+            String imageUrl = (String) productionJson.get("imageUrl");
 
             List<String> directors = new ArrayList<>();
             JSONArray directorsJson = (JSONArray) productionJson.get("directors");
@@ -351,7 +354,7 @@ public class IMDB {
                 String duration = (String) productionJson.get("duration");
                 Movie movie = new Movie(title, directors,
                         actors, genres, ratings, plot, averageRating,
-                        "ADMIN", duration, releaseYear);
+                        "ADMIN", imageUrl, duration, releaseYear); //TODO
                 productions.add(movie);
             } else if (type.equals("Series")) {
                 Integer numSeasons;
@@ -376,7 +379,7 @@ public class IMDB {
                 }
                 Series series = new Series(title, directors, actors,
                         genres, ratings, plot, averageRating,
-                        "ADMIN", releaseYear, seasonEpisodes);
+                        "ADMIN", imageUrl, releaseYear, seasonEpisodes); //TODO
                 productions.add(series);
             }
 //            System.out.println(title);

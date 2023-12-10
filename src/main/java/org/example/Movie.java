@@ -10,8 +10,9 @@ public class Movie extends Production{
     public Movie(String title, List<String> directors,
                  List<String> actors, List<Genre> genres,
                  List<Rating> ratings, String description,
+                 String imageUrl,
                  String runtime, Integer releaseYear) {
-        super(title, directors, actors, genres, ratings, description);
+        super(title, directors, actors, genres, ratings, description, imageUrl);
         this.runtime = runtime;
         this.releaseYear = releaseYear;
     }
@@ -19,9 +20,9 @@ public class Movie extends Production{
     public Movie(String title, List<String> directors,
                  List<String> actors, List<Genre> genres,
                  List<Rating> ratings, String description,
-                 String author, String runtime,
+                 String author, String imageUrl, String runtime,
                  Integer releaseYear) {
-        super(title, directors, actors, genres, ratings, description, author);
+        super(title, directors, actors, genres, ratings, description, author, imageUrl);
         this.runtime = runtime;
         this.releaseYear = releaseYear;
     }
@@ -29,10 +30,10 @@ public class Movie extends Production{
     public Movie(String title, List<String> directors,
                  List<String> actors, List<Genre> genres,
                  List<Rating> ratings, String description,
-                 Double averageRating, String author,
+                 Double averageRating, String author, String imageUrl,
                  String runtime, Integer releaseYear) {
         super(title, directors, actors, genres, ratings, description,
-                averageRating, author);
+                averageRating, author, imageUrl);
         this.runtime = runtime;
         this.releaseYear = releaseYear;
     }

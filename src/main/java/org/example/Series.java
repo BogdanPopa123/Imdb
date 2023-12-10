@@ -11,9 +11,9 @@ public class Series extends Production{
     public Series(String title, List<String> directors,
                   List<String> actors, List<Genre> genres,
                   List<Rating> ratings, String description,
-                  Integer releaseYear,
+                  String imageUrl, Integer releaseYear,
                   Map<String, List<Episode>> seasonEpisodes) {
-        super(title, directors, actors, genres, ratings, description);
+        super(title, directors, actors, genres, ratings, description, imageUrl);
         this.releaseYear = releaseYear;
         this.seasonEpisodes = seasonEpisodes;
     }
@@ -21,9 +21,9 @@ public class Series extends Production{
     public Series(String title, List<String> directors,
                   List<String> actors, List<Genre> genres,
                   List<Rating> ratings, String description,
-                  String author, Integer releaseYear,
+                  String author, String imageUrl, Integer releaseYear,
                   Map<String, List<Episode>> seasonEpisodes) {
-        super(title, directors, actors, genres, ratings, description, author);
+        super(title, directors, actors, genres, ratings, description, author, imageUrl);
         this.releaseYear = releaseYear;
         this.seasonEpisodes = seasonEpisodes;
     }
@@ -31,10 +31,10 @@ public class Series extends Production{
     public Series(String title, List<String> directors,
                   List<String> actors, List<Genre> genres,
                   List<Rating> ratings, String description,
-                  Double averageRating, String author,
+                  Double averageRating, String author, String imageUrl,
                   Integer releaseYear, Map<String, List<Episode>> seasonEpisodes) {
         super(title, directors, actors, genres, ratings,
-                description, averageRating, author);
+                description, averageRating, author, imageUrl);
         this.releaseYear = releaseYear;
         this.seasonEpisodes = seasonEpisodes;
     }
