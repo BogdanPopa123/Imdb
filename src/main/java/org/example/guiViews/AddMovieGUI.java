@@ -1,9 +1,6 @@
 package org.example.guiViews;
 
-import org.example.LoggedUser;
-import org.example.Movie;
-import org.example.Rating;
-import org.example.Staff;
+import org.example.*;
 import org.example.enums.Genre;
 
 import javax.swing.*;
@@ -111,7 +108,8 @@ public class AddMovieGUI extends JFrame {
             && movie.getDirectors().size() > 0 && movie.getActors().size() > 0
             && movie.getGenres().size() > 0 && bioTextArea.getText() != null
             && !bioTextArea.getText().trim().equals("") && urlTextField.getText() != null
-            && !urlTextField.getText().trim().equals("")) {
+            && !urlTextField.getText().trim().equals("")
+            && AddSeriesGUI.checkUrlString(urlTextField.getText().trim())) {
 
                 movie.setTitle(titleTextField.getText());
                 movie.setDescription(bioTextArea.getText());
@@ -151,7 +149,7 @@ public class AddMovieGUI extends JFrame {
 }
 
 class EnterDirectors extends JFrame{
-    public EnterDirectors(int numDirectors, Movie movie){
+    public EnterDirectors(int numDirectors, Production production){
 
         setLayout(new GridLayout(numDirectors + 1, 1));
         List<JTextField> directorTextFields = new ArrayList<JTextField>();
@@ -182,7 +180,7 @@ class EnterDirectors extends JFrame{
                 }
             }
 
-            movie.setDirectors(directors);
+            production.setDirectors(directors);
 
             this.dispose();
         });
@@ -193,11 +191,13 @@ class EnterDirectors extends JFrame{
         setSize(600, 400);
         setVisible(true);
     }
+
+
 }
 
 
 class EnterActors extends JFrame{
-    public EnterActors(int numActors, Movie movie){
+    public EnterActors(int numActors, Production production){
 
         setLayout(new GridLayout(numActors + 1, 1));
         List<JTextField> actorTextFields = new ArrayList<JTextField>();
@@ -228,7 +228,7 @@ class EnterActors extends JFrame{
                 }
             }
 
-            movie.setActors(actors);
+            production.setActors(actors);
 
             this.dispose();
         });
@@ -242,7 +242,7 @@ class EnterActors extends JFrame{
 }
 
 class EnterGenres extends JFrame{
-    public EnterGenres(Movie movie) {
+    public EnterGenres(Production production) {
 
         List<JCheckBox> genreCheckBoxes = new ArrayList<>();
 
@@ -267,7 +267,7 @@ class EnterGenres extends JFrame{
                 }
             }
 
-            movie.setGenres(selectedGenres);
+            production.setGenres(selectedGenres);
 
             this.dispose();
         });

@@ -106,7 +106,7 @@ public class HomeViewGUI extends JFrame {
         JButton listNotificationsButton = new JButton("List Notifications");
         listNotificationsButton.addActionListener(e -> {
             JDialog dialog = new JDialog();
-            dialog.setTitle("Actors");
+            dialog.setTitle("Notifications");
 
             JTextArea textArea = new JTextArea();
             textArea.setEditable(false);
@@ -288,6 +288,11 @@ public class HomeViewGUI extends JFrame {
             new CreateDeleteActorProdGUI();
         });
 
+        JButton solveRequests = new JButton("Solve Requests");
+        solveRequests.addActionListener(e -> {
+            new SolveRequestsGUI();
+        });
+
         if (LoggedUser.currentUser.getAccountType().equals(AccountType.REGULAR)) {
             regularPanel.add(listProductionsButton);
             regularPanel.add(listActorsButton);
@@ -305,6 +310,7 @@ public class HomeViewGUI extends JFrame {
             contributorPanel.add(addRemoveFavourites);
             contributorPanel.add(createRemoveRequest);
             contributorPanel.add(createDeleteActorProd);
+            contributorPanel.add(solveRequests);
             contributorPanel.add(logoutButton);
             add(contributorPanel);
         } else if (LoggedUser.currentUser.getAccountType().equals(AccountType.ADMIN)) {
@@ -314,6 +320,7 @@ public class HomeViewGUI extends JFrame {
             adminPanel.add(searchObjectButton);
             adminPanel.add(addRemoveFavourites);
             adminPanel.add(createDeleteActorProd);
+            adminPanel.add(solveRequests);
             adminPanel.add(logoutButton);
             add(adminPanel);
         }
