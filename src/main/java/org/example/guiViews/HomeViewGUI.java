@@ -283,6 +283,11 @@ public class HomeViewGUI extends JFrame {
             new CreateRequestGUI();
         });
 
+        JButton createDeleteActorProd = new JButton("Add/Remove Actor/Production");
+        createDeleteActorProd.addActionListener(e -> {
+            new CreateDeleteActorProdGUI();
+        });
+
         if (LoggedUser.currentUser.getAccountType().equals(AccountType.REGULAR)) {
             regularPanel.add(listProductionsButton);
             regularPanel.add(listActorsButton);
@@ -299,6 +304,7 @@ public class HomeViewGUI extends JFrame {
             contributorPanel.add(searchObjectButton);
             contributorPanel.add(addRemoveFavourites);
             contributorPanel.add(createRemoveRequest);
+            contributorPanel.add(createDeleteActorProd);
             contributorPanel.add(logoutButton);
             add(contributorPanel);
         } else if (LoggedUser.currentUser.getAccountType().equals(AccountType.ADMIN)) {
@@ -307,6 +313,7 @@ public class HomeViewGUI extends JFrame {
             adminPanel.add(listNotificationsButton);
             adminPanel.add(searchObjectButton);
             adminPanel.add(addRemoveFavourites);
+            adminPanel.add(createDeleteActorProd);
             adminPanel.add(logoutButton);
             add(adminPanel);
         }

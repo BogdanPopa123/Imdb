@@ -53,14 +53,6 @@ public abstract class User implements Observer {
     @Override
     public void update(Subject subject, String message) {
         if (subject instanceof Request) {
-//            Request request = (Request) subject;
-//            String notification = "New request\n" +
-//                    "    Created at: " + request.getCreationTime().toString() +
-//                    "\n    Type: " + request.getRequestType().toString() +
-//                    "\n    From: " + request.getIssuerUsername() +
-//                    "\n    Subject: " + request.getSubject() +
-//                    "\n    Description: " + request.getDescription();
-//            this.getNotifications().add(notification);
         this.getNotifications().add(message);
         } else if (subject instanceof Rating) {
             this.getNotifications().add(message);
