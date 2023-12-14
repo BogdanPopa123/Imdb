@@ -7,7 +7,10 @@ import org.example.enums.Genre;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -510,14 +513,26 @@ public class HomeViewGUI extends JFrame {
             JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JButton trailerButton = new JButton("Watch trailer");
 
-            if (!(HomeView.fetch(textField.getText().trim()) instanceof Production)) {
+            Object fetched = HomeView.fetch(textField.getText().trim());
+            String trailerUrl = null;
+            if (!(fetched instanceof Production)) {
                 trailerButton.setEnabled(false);
             } else {
-                trailerButton.setEnabled(true);
+//                trailerButton.setEnabled(true);
+                Production production = (Production) fetched;
+                trailerUrl = TrailersMap.urlMap.get(production.getTitle());
+                if (trailerUrl == null || trailerUrl.equals("")) {
+                    trailerButton.setEnabled(false);
+                } else {
+                    trailerButton.setEnabled(true);
+                }
             }
 
+            final String finalTrailerUrl = trailerUrl;
+
             trailerButton.addActionListener(e -> {
-                //TODO add trailer view
+//                new WatchTrailerView("https://www.youtube.com/watch?v=XrGPh9nxK_E&ab_channel=FlorinMitroiOficial");
+                openWebPage(finalTrailerUrl);
             });
 
             buttonPanel.add(trailerButton);
@@ -535,6 +550,14 @@ public class HomeViewGUI extends JFrame {
             dialog.setVisible(true);
         } catch (MalformedURLException malformedURLException) {
             malformedURLException.printStackTrace();
+        }
+    }
+
+    private void openWebPage(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
         }
     }
 }

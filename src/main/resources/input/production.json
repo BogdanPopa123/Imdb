@@ -43,7 +43,8 @@
     "averageRating": 9.2,
     "duration": "142 minutes",
     "releaseYear": 1994,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThrAYqFAtA-e1_Vlm8meSkIBiV0Ty-KGaWiw&usqp=CAU"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThrAYqFAtA-e1_Vlm8meSkIBiV0Ty-KGaWiw&usqp=CAU",
+    "trailerUrl": "https://www.youtube.com/watch?v=PLl99DlL6b4&ab_channel=WarnerBros.Entertainment"
   },
   {
     "title": "Breaking Bad",
@@ -75,6 +76,7 @@
     "plot": "A high school chemistry teacher turned methamphetamine manufacturing drug dealer navigates the dangerous criminal underworld.",
     "averageRating": 9.5,
     "releaseYear": 2008,
+    "trailerUrl": "https://www.youtube.com/watch?v=HhesaQXLuRY&ab_channel=TrailerBlend",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaIGoM0ckYGBokhWN7jG7DlQGAKq-OmcBz9w&usqp=CAU",
     "numSeasons": 5,
     "seasons": {
@@ -377,6 +379,7 @@
     ],
     "plot": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     "averageRating": 8.8,
+    "trailerUrl": "https://www.youtube.com/watch?v=s7EdQ4FqbhY&ab_channel=Movieclips",
     "duration": "154 minutes",
     "releaseYear": 1994,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9XAt5Q778-J6dSk1nteNUkcydIlSuHZHDDw&usqp=CAU"
@@ -425,6 +428,7 @@
     "plot": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
     "averageRating": 9.2,
     "duration": "175 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=UaVTIH8mujA&ab_channel=ParamountPictures",
     "releaseYear": 1972,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0rtUD4cEhwty_2kQsr9JpHSCidTLJr_ov4w&usqp=CAU"
   },
@@ -467,6 +471,7 @@
     "plot": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
     "averageRating": 9.5,
     "duration": "195 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=gG22XNhtnoY&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 1993,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8KSG9cHU92dOmPr_8Dw8Bcb0RGxkyMyaKw&usqp=CAU"
   },
@@ -510,6 +515,7 @@
     ],
     "plot": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
     "averageRating": 9.6,
+    "trailerUrl": "https://www.youtube.com/watch?v=r5X-hFf6Bwo&ab_channel=Movieclips",
     "duration": "201 minutes",
     "releaseYear": 2003,
     "imageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVAtbkFJqpByOmryTPqSaNfrvoJRTAhF2gpw&usqp=CAU"
@@ -553,6 +559,7 @@
     "plot": "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.",
     "averageRating": 9.5,
     "duration": "150 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=BFwGqLa_oAo&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 2002,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZXsoZVytW3w-yisTtKh3tTgclJHqyfGCCLA&usqp=CAU"
   },
@@ -595,6 +602,7 @@
     "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
     "averageRating": 9.0,
     "duration": "136 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=vKQi3bBA1y8&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 1999,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW6MQhwZiB7V72c3lTaYskjMpQ4B37sbyUTQ&usqp=CAU"
   },
@@ -638,6 +646,7 @@
     ],
     "plot": "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
     "averageRating": 8.6,
+    "trailerUrl": "https://www.youtube.com/watch?v=IrBKwzL3K7s&ab_channel=eleanorcreates",
     "releaseYear": 2010,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHgU22R8nOGgvgCIuOZjEuEYLVYTx_b7t30g&usqp=CAU",
     "numSeasons": 4,
@@ -739,6 +748,7 @@
     ],
     "plot": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
     "averageRating": 8.8,
+    "trailerUrl": "https://www.youtube.com/watch?v=EXeTwQWrcwY&ab_channel=RottenTomatoesClassicTrailers",
     "duration": "152 minutes",
     "releaseYear": 2008,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaDn87SMdMvAPXshcWEVeFsjhy7zPB8vi0g&usqp=CAU"
@@ -783,6 +793,7 @@
     "plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
     "averageRating": 9.5,
     "duration": "140 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=YoHD9XEInc0&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 2010,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcGX8JLSHy2bsKdnSssSdNJW5RwsCi_OcL7A&usqp=CAU"
   },
@@ -825,6 +836,7 @@
     ],
     "plot": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces in order to get him back.",
     "averageRating": 7.8,
+    "trailerUrl": "https://www.youtube.com/watch?v=b9EkMc79ZSU&ab_channel=Netflix",
     "releaseYear": 2016,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLCEA-7glz_Wp3uB-comjXNDymcL1RRizJKQ&usqp=CAU",
     "numSeasons": 3,
@@ -976,6 +988,7 @@
     "plot": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
     "averageRating": 8.5,
     "duration": "142 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=bLvqoHBptjg&ab_channel=ParamountMovies",
     "releaseYear": 1994,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-RaxeiZz124_eZBZ1GOkEHWi95323fIA8-g&usqp=CAU"
   },
@@ -1024,6 +1037,7 @@
     ],
     "plot": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
     "averageRating": 9.4,
+    "trailerUrl": "https://www.youtube.com/watch?v=Ki4haFrqSrw&ab_channel=RottenTomatoesClassicTrailers",
     "duration": "189 minutes",
     "releaseYear": 1999,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3R8QCy3453uJgwn83F1bvUnVBCEWZ0XoBpA&usqp=CAU"
@@ -1069,6 +1083,7 @@
     "plot": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.",
     "averageRating": 8.8,
     "duration": "153 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=KnrRy6kSFF0&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 2009,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4IXsMD4EHiGSAF8G8gk98m4IsisuPjJwtxA&usqp=CAU"
   },
@@ -1118,6 +1133,7 @@
     "plot": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
     "averageRating": 9.2,
     "duration": "132 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=5xH0HfJHsaY&ab_channel=IGN",
     "releaseYear": 2019,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZEiqC2Z_P9J6NgFsioOHamKa326iAdQuFbA&usqp=CAU"
   },
@@ -1166,6 +1182,7 @@
     "plot": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime.",
     "averageRating": 8.7,
     "duration": "122 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=zAGVQLHvwOY&ab_channel=WarnerBros.Pictures",
     "releaseYear": 2019,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdLG9P-64k2cTkMWiw8EqPyZMJJje56Ns2Ag&usqp=CAU"
   },
@@ -1213,6 +1230,7 @@
     "plot": "Two young British soldiers during World War I are given an impossible mission: deliver a message deep in enemy territory that will stop 1,600 men, and one of the soldiers' brothers, from walking straight into a deadly trap.",
     "averageRating": 8.5,
     "duration": "119 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=YqNYrYUiMfg&ab_channel=UniversalPictures",
     "releaseYear": 2019,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREv7L8yvc5R1JEZGJgToGxbPlBcsyYi7HBEQ&usqp=CAU"
   },
@@ -1262,6 +1280,7 @@
     "plot": "An old man recalls his time painting houses for his friend, Jimmy Hoffa, through the 1950-70s.",
     "averageRating": 8.6,
     "duration": "209 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=WHXxVmeGQUc&ab_channel=Netflix",
     "releaseYear": 2019,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFcSqRZo_ZLgTcryE3Wr45RO-8RC5GaU3MA&usqp=CAU"
   },
@@ -1310,6 +1329,7 @@
     "plot": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
     "averageRating": 8.0,
     "releaseYear": 2019,
+    "trailerUrl": "https://www.youtube.com/watch?v=aOC8E8z_ifw&ab_channel=StarWars",
     "numSeasons": 2,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWOu4oYlByhXSTtp6DN54Pbj9kIPFGqhwULQ&usqp=CAU",
     "seasons": {
@@ -1426,6 +1446,7 @@
     "plot": "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.",
     "averageRating": 8.6,
     "releaseYear": 2020,
+    "trailerUrl": "https://www.youtube.com/results?search_query=queen%27s+gambit+trailer",
     "numSeasons": 1,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHpG4skyEBuA8bKxLiCUijOTpacxAJ9YhxAw&usqp=CAU",
     "seasons": {
@@ -1506,6 +1527,7 @@
     "plot": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes.",
     "averageRating": 8.5,
     "releaseYear": 2021,
+    "trailerUrl": "https://www.youtube.com/watch?v=oqxAJKy0ii4&ab_channel=Netflix",
     "numSeasons": 1,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKXsOln_kSuYkaNZc1JmzVxVAiJpwSXAyDBw&usqp=CAU",
     "seasons": {
@@ -1592,6 +1614,7 @@
     "plot": "A promising young drummer enrolls at a cutthroat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
     "averageRating": 8.5,
     "duration": "107 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=7d_jQycdQGo&ab_channel=RottenTomatoesComingSoon",
     "releaseYear": 2014,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp1HbvtMHXtq4WiVosmyBje60OIFkZeOb4uQ&usqp=CAU"
   },
@@ -1639,6 +1662,7 @@
     "plot": "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea, and by the co-founder who was later squeezed out of the business.",
     "averageRating": 7.7,
     "duration": "120 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=lB95KLmpLR4&ab_channel=SonyPicturesEntertainment",
     "releaseYear": 2010,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtWefjMqVKCi3hZ5U86Q2FcV4mSzGnAYOBZQ&usqp=CAU"
   },
@@ -1687,6 +1711,7 @@
     "plot": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.",
     "averageRating": 8.3,
     "duration": "108 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=07-QBnEkgXU&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 2004,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyr6UeHqHSh7pPpNtPoCPmBExj2QR6q7yFKQ&usqp=CAU"
   },
@@ -1734,6 +1759,7 @@
     "plot": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
     "averageRating": 8.0,
     "duration": "128 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=0pdqf4P9MB8&ab_channel=LionsgateMovies",
     "releaseYear": 2016,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpyNwBh8IZlfj1ThQ_gX7oL0YKGioYPd4R3g&usqp=CAU"
   },
@@ -1782,6 +1808,7 @@
     "plot": "A hotel concierge and a lobby boy become embroiled in the theft of a priceless painting and the battle for an enormous family fortune.",
     "averageRating": 8.1,
     "duration": "99 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=1Fg5iWmQjwk&ab_channel=SearchlightPictures",
     "releaseYear": 2014,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwlGSAODGtfiQLGDbpJAMW2TsCsjWupWErQ&usqp=CAU"
   },
@@ -1831,6 +1858,7 @@
     "plot": "At a top-secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.",
     "averageRating": 7.3,
     "duration": "123 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=XFYWazblaUA&ab_channel=SearchlightPictures",
     "releaseYear": 2017,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3-HJTyUzFleVtRjObDv4ZqaZ5fZPJUkrxaA&usqp=CAU"
   },
@@ -1878,6 +1906,7 @@
     "plot": "A committed dancer competes for the lead role in a production of Tchaikovsky's 'Swan Lake' only to be met with competition from a rival dancer who impresses as the seductive Black Swan.",
     "averageRating": 8.0,
     "duration": "108 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=5jaI1XOB-bs&ab_channel=SearchlightPictures",
     "releaseYear": 2010,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrH2DH-EKFouHKwf93letsPjhgrjAWEkBs8A&usqp=CAU"
   },
@@ -1926,6 +1955,7 @@
     "plot": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.",
     "averageRating": 7.8,
     "duration": "156 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=LoebZZ8K5N0&ab_channel=20thCenturyStudios",
     "releaseYear": 2015,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGXLIX2ICqep5psTxVfViXvTI1gXo-qKreaA&usqp=CAU"
   },
@@ -1974,6 +2004,7 @@
     "plot": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search of her homeland with the help of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
     "averageRating": 8.1,
     "duration": "120 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=hEJnMQG9ev8&ab_channel=WarnerBros.Pictures",
     "releaseYear": 2015,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMS458DjVjvf7UiYGqqB1gFf__P6SBGYUlDA&usqp=CAU"
   },
@@ -2022,6 +2053,7 @@
     "plot": "After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.",
     "averageRating": 7.9,
     "duration": "135 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=EajIlG_OCvw&ab_channel=Amblin",
     "releaseYear": 2001,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgr0br9gVxP30dlmP-kdrDWMcaykixxqaVJg&usqp=CAU"
   },
@@ -2071,6 +2103,7 @@
     "plot": "An undercover cop and a mole in the police force attempt to identify each other while infiltrating an Irish gang in South Boston.",
     "averageRating": 8.5,
     "duration": "151 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=iojhqm0JTW4&ab_channel=RottenTomatoesClassicTrailers",
     "releaseYear": 2006,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTALU2kOATzw3iMZ54tqbmToR5-iAbw_rAX9w&usqp=CAU"
   },
@@ -2099,6 +2132,7 @@
     "plot": "Cel mai bun pregaratar pregateste uorez cu lapte pentru mafia uorezului si toti nepotii lui.",
     "averageRating": 10.0,
     "duration": "2 minutes",
+    "trailerUrl": "https://www.youtube.com/watch?v=3FLmCTATy9o&ab_channel=%C8%98oimu%C8%99anDani",
     "releaseYear": 2017,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGCXBQVfu8pvscMYROjpyTlMZDN6PZsDPLZA&usqp=CAU"
   },
@@ -2125,6 +2159,7 @@
     "plot": "Bahoi sare de pe pod. Titlul e un bun rezumat al filmului.",
     "averageRating": 10.0,
     "duration": "3 minute",
+    "trailerUrl": "https://www.youtube.com/watch?v=wD0itQN6ju8&ab_channel=bahoioficial",
     "releaseYear": 2009,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFqc1DgLvdVnwehd1wCcCtyp-1RRCiPxCpkw&usqp=CAU"
   },
@@ -2148,6 +2183,7 @@
       }
     ],
     "plot": "Test Plot",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT93L1OzyLq774gR48Xtb1Ff_gEHFh0iYHg&usqp=CAU",
     "averageRating": 6.0,
     "duration": "1 minute"
   },

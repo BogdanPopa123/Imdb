@@ -299,6 +299,8 @@ public class IMDB {
             String title = (String) productionJson.get("title");
             String type = (String) productionJson.get("type");
             String imageUrl = (String) productionJson.get("imageUrl");
+            String trailerUrl = (String) productionJson.get("trailerUrl");
+            TrailersMap.urlMap.put(title, trailerUrl);
 
             List<String> directors = new ArrayList<>();
             JSONArray directorsJson = (JSONArray) productionJson.get("directors");
