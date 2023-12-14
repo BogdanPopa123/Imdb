@@ -1,10 +1,14 @@
 package org.example.guiViews;
 
+import org.example.Admin;
+import org.example.LoggedUser;
 import org.example.enums.AccountType;
 import org.example.enums.Gender;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -121,11 +125,31 @@ public class AddUserGUI extends JFrame {
             String country = countryField.getText();
             Gender gender = (Gender) genderComboBox.getSelectedItem();
             AccountType type = (AccountType) accountTypeComboBox.getSelectedItem();
+            Integer age = (Integer) ageSpinner.getValue();
             int dayOfBirth = (int) daySpinner.getValue();
             int monthOfBirth = (int) monthSpinner.getValue();
             int yearOfBirth = (int) yearSpinner.getValue();
 
+            //TODO VALIDATE DATA AND ADD USER
 
+            if (usernameField.getText() != null && !usernameField.getText().trim().equals("")
+            && emailField.getText() != null && !emailField.getText().trim().equals("")
+            && password != null && !password.trim().equals("")
+            && nameField.getText() != null && !nameField.getText().trim().equals("")
+            && countryField.getText() != null && !countryField.getText().trim().equals("")) {
+                try {
+                    LocalDate dob = LocalDate.of(yearOfBirth,
+                            monthOfBirth, dayOfBirth);
+                    ((Admin) LoggedUser.currentUser).addUser(username, email,
+                            password, name, country, age, gender, dob, type);
+                    infoLabel.setText("User added successfully ");
+                }catch(DateTimeException exception){
+                    infoLabel.setText("Enter a valid date of birth");
+                }
+            } else {
+                infoLabel.setText("Complete all fields");
+                return;
+            }
         });
         addButtonFlow.add(infoLabel);
         addButtonFlow.add(addButton);

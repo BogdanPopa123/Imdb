@@ -46,7 +46,7 @@ public class HomeViewGUI extends JFrame {
         userInfoPanel.add(welcomeBackLabel);
         userInfoPanel.add(experrienceLabel);
 
-        JPanel regularPanel = new JPanel(new GridLayout(8, 1));
+        JPanel regularPanel = new JPanel(new GridLayout(9, 1));
         JPanel contributorPanel = new JPanel(new GridLayout(11, 1));
         JPanel adminPanel = new JPanel(new GridLayout(11, 1));
 
@@ -308,7 +308,19 @@ public class HomeViewGUI extends JFrame {
             new AddRemoveUserGUI();
         });
 
+        JButton refreshButton = new JButton("Refresh experience");
+        refreshButton.addActionListener(e -> {
+            String string2 = null;
+            if (LoggedUser.currentUser.getAccountType().equals(AccountType.ADMIN)) {
+                string2 = "-";
+            } else {
+                string2 = "" + LoggedUser.currentUser.getExperience().intValue();
+            }
+            experrienceLabel.setText("User experience: " + string2);
+        });
+
         if (LoggedUser.currentUser.getAccountType().equals(AccountType.REGULAR)) {
+            regularPanel.add(refreshButton);
             regularPanel.add(listProductionsButton);
             regularPanel.add(listActorsButton);
             regularPanel.add(listNotificationsButton);
@@ -319,6 +331,7 @@ public class HomeViewGUI extends JFrame {
             regularPanel.add(logoutButton);
             add(regularPanel);
         } else if (LoggedUser.currentUser.getAccountType().equals(AccountType.CONTRIBUTOR)){
+            contributorPanel.add(refreshButton);
             contributorPanel.add(listProductionsButton);
             contributorPanel.add(listActorsButton);
             contributorPanel.add(listNotificationsButton);
@@ -331,6 +344,7 @@ public class HomeViewGUI extends JFrame {
             contributorPanel.add(logoutButton);
             add(contributorPanel);
         } else if (LoggedUser.currentUser.getAccountType().equals(AccountType.ADMIN)) {
+            adminPanel.add(refreshButton);
             adminPanel.add(listProductionsButton);
             adminPanel.add(listActorsButton);
             adminPanel.add(listNotificationsButton);

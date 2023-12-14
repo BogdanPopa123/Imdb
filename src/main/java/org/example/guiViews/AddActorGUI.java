@@ -3,6 +3,7 @@ package org.example.guiViews;
 import org.example.Actor;
 import org.example.LoggedUser;
 import org.example.Staff;
+import org.example.cliViews.HomeView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,8 +74,17 @@ public class AddActorGUI extends JFrame {
                 actor.setImageUrl(urlTextField.getText().trim());
                 actor.setAverageRating(actor.calculateAverageRating());
 
-                ((Staff)LoggedUser.currentUser).addActorSystem(actor);
-                saveActorInfo.setText("Actor saved successfully");
+                Object fetchResult = HomeView.fetch(actor.getName());
+
+                if (fetchResult == null) {
+                    ((Staff)LoggedUser.currentUser).addActorSystem(actor);
+                    saveActorInfo.setText("Actor saved successfully");
+                } else {
+                    Actor fetchResultActor = (Actor) fetchResult;
+                    saveActorInfo.setText("Actor " + fetchResultActor.getName() +
+                            " already exists");
+                }
+
             } else {
                 saveActorInfo.setText("Complete all fields");
             }
@@ -91,6 +101,7 @@ public class AddActorGUI extends JFrame {
         setSize(600, 400);
         setVisible(true);
     }
+
 
 }
 

@@ -1,6 +1,7 @@
 package org.example.guiViews;
 
 import org.example.*;
+import org.example.cliViews.HomeView;
 import org.example.enums.Genre;
 
 import javax.swing.*;
@@ -119,8 +120,17 @@ public class AddMovieGUI extends JFrame {
                 movie.setReleaseYear((int) releaseYearSpinner.getValue());
                 movie.setAverageRating(movie.calculateAverageRating());
 
-                addMoveLabel.setText("Movie added successfully");
-                ((Staff)LoggedUser.currentUser).addProductionSystem(movie);
+                Object fetchResult = HomeView.fetch(movie.getTitle());
+
+                if (fetchResult == null) {
+                    addMoveLabel.setText("Movie added successfully");
+                    ((Staff)LoggedUser.currentUser).addProductionSystem(movie);
+                } else {
+                    Movie fetchResultMovie = (Movie) fetchResult;
+                    addMoveLabel.setText("Movie " + fetchResultMovie.getTitle()
+                            + " already exists");
+                }
+
 
             } else {
                 addMoveLabel.setText("Complete all fields");

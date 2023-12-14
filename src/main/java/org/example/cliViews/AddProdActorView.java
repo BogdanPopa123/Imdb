@@ -80,7 +80,7 @@ public class AddProdActorView {
         }
 
         if (LoggedUser.currentUser instanceof Staff
-        && actor!= null) {
+        && actor!= null && HomeView.fetch(actor.getName()) == null ) { //TODO added fetchCondition
             Staff staff = (Staff) LoggedUser.currentUser;
             staff.addActorSystem(actor);
         }
@@ -148,7 +148,7 @@ public class AddProdActorView {
                     null, duration, releaseYear);
 
             if (LoggedUser.currentUser instanceof Staff
-                    && movie != null) {
+                    && movie != null && HomeView.fetch(movie.getTitle()) == null) { //TODO added fetch condition
                 Staff staff = (Staff) LoggedUser.currentUser;
                 staff.addProductionSystem(movie);
             }
@@ -246,7 +246,7 @@ public class AddProdActorView {
                     null, releaseYear, seasonEpisodes);
 
             if (LoggedUser.currentUser instanceof Staff
-                    && series != null) {
+                    && series != null && HomeView.fetch(series.getTitle()) == null) { //TODO added fetch condition
                 Staff staff = (Staff) LoggedUser.currentUser;
                 staff.addProductionSystem(series);
             }

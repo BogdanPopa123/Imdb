@@ -2,6 +2,7 @@ package org.example.guiViews;
 
 
 import org.example.*;
+import org.example.cliViews.HomeView;
 import org.example.enums.Genre;
 
 import javax.swing.*;
@@ -125,9 +126,17 @@ public class AddSeriesGUI extends JFrame {
                 series.setReleaseYear((int) releaseYearSpinner.getValue());
                 series.setAverageRating(series.calculateAverageRating());
 
-                addSeriesLabel.setText("Series added successfully");
+                Object fetchResult = HomeView.fetch(series.getTitle());
 
-                ((Staff)LoggedUser.currentUser).addProductionSystem(series);
+                if (fetchResult == null) {
+                    addSeriesLabel.setText("Series added successfully");
+                    ((Staff)LoggedUser.currentUser).addProductionSystem(series);
+                } else {
+                    Series fetchedResultSeries = (Series) fetchResult;
+                    addSeriesLabel.setText("Series " + fetchedResultSeries.getTitle()
+                            + " already exists");
+                }
+
             } else {
                 addSeriesLabel.setText("Complete all fields");
             }
