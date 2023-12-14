@@ -34,7 +34,7 @@ public class CreateRequestGUI extends JFrame {
             dialog.add(scrollPane);
 
             dialog.setSize(600, 400);
-            dialog.setLocationRelativeTo(null); // Center the dialog on the screen
+            dialog.setLocationRelativeTo(null);
             dialog.setVisible(true);
         });
 

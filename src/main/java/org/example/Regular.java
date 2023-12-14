@@ -115,7 +115,7 @@ public class Regular extends User implements RequestsManager{
             rating.registerObserver(user);
         }
 
-        //nu vreau ca cel care a creeat requestul sa primeasca
+        //nu vreau ca cel care a creat requestul sa primeasca
         //notificarea
         rating.removeObserver(ratingAuthor);
 

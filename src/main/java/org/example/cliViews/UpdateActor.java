@@ -47,7 +47,7 @@ public class UpdateActor {
 
 
             actor = new Actor(oldActor.getName(), new ArrayList<>(), biography,
-                    LoggedUser.currentUser.getUsername());
+                    LoggedUser.currentUser.getUsername(), null);
 
             for (int i = 0; i < numPairs; i++) {
                 System.out.println("Enter name of performance:");

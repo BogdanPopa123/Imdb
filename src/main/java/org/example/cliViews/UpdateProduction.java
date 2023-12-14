@@ -88,7 +88,7 @@ public class UpdateProduction {
 
             movie = new Movie(oldMovie.getTitle(), directors, actors, genres,
                     new ArrayList<>(), plot, LoggedUser.currentUser.getUsername(),
-                    duration, releaseYear);
+                    null, duration, releaseYear);
 
             if (LoggedUser.currentUser instanceof Staff
                     && movie != null) {
@@ -188,7 +188,7 @@ public class UpdateProduction {
 
             series = new Series(oldSeries.getTitle(), directors, actors, genres,
                     new ArrayList<>(), plot, LoggedUser.currentUser.getUsername(),
-                    releaseYear, seasonEpisodes);
+                    null, releaseYear, seasonEpisodes);
 
             if (LoggedUser.currentUser instanceof Staff
                     && series != null) {

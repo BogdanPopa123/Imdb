@@ -66,7 +66,7 @@ public class AddProdActorView {
 
 
             actor = new Actor(name, new ArrayList<>(), biography,
-                    LoggedUser.currentUser.getUsername());
+                    LoggedUser.currentUser.getUsername(), null);
 
             for (int i = 0; i < numPairs; i++) {
                 System.out.println("Enter name of performance:");
@@ -145,7 +145,7 @@ public class AddProdActorView {
 
             movie = new Movie(title, directors, actors, genres,
                     new ArrayList<>(), plot, LoggedUser.currentUser.getUsername(),
-                    duration, releaseYear);
+                    null, duration, releaseYear);
 
             if (LoggedUser.currentUser instanceof Staff
                     && movie != null) {
@@ -243,7 +243,7 @@ public class AddProdActorView {
 
             series = new Series(title, directors, actors, genres,
                     new ArrayList<>(), plot, LoggedUser.currentUser.getUsername(),
-                    releaseYear, seasonEpisodes);
+                    null, releaseYear, seasonEpisodes);
 
             if (LoggedUser.currentUser instanceof Staff
                     && series != null) {

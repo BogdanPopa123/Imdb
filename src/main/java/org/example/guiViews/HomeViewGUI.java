@@ -46,7 +46,7 @@ public class HomeViewGUI extends JFrame {
         userInfoPanel.add(welcomeBackLabel);
         userInfoPanel.add(experrienceLabel);
 
-        JPanel regularPanel = new JPanel(new GridLayout(7, 1));
+        JPanel regularPanel = new JPanel(new GridLayout(8, 1));
         JPanel contributorPanel = new JPanel(new GridLayout(11, 1));
         JPanel adminPanel = new JPanel(new GridLayout(11, 1));
 
@@ -298,6 +298,16 @@ public class HomeViewGUI extends JFrame {
             new UpdateProdActorGUI();
         });
 
+        JButton manageRatings = new JButton("Add/Remove Rating");
+        manageRatings.addActionListener(e -> {
+            new ManageRatingsGUI();
+        });
+
+        JButton addRemoveUserButton = new JButton("Add/Remove User");
+        addRemoveUserButton.addActionListener(e -> {
+            new AddRemoveUserGUI();
+        });
+
         if (LoggedUser.currentUser.getAccountType().equals(AccountType.REGULAR)) {
             regularPanel.add(listProductionsButton);
             regularPanel.add(listActorsButton);
@@ -305,6 +315,7 @@ public class HomeViewGUI extends JFrame {
             regularPanel.add(searchObjectButton);
             regularPanel.add(addRemoveFavourites);
             regularPanel.add(createRemoveRequest);
+            regularPanel.add(manageRatings);
             regularPanel.add(logoutButton);
             add(regularPanel);
         } else if (LoggedUser.currentUser.getAccountType().equals(AccountType.CONTRIBUTOR)){
@@ -328,6 +339,7 @@ public class HomeViewGUI extends JFrame {
             adminPanel.add(createDeleteActorProd);
             adminPanel.add(solveRequests);
             adminPanel.add(updateProdActor);
+            adminPanel.add(addRemoveUserButton);
             adminPanel.add(logoutButton);
             add(adminPanel);
         }
