@@ -36,8 +36,82 @@ public class SolveRequestsGUI extends JFrame {
             dialog.setVisible(true);
         });
 
+        JPanel solveRequestFlow = new JPanel(new FlowLayout());
+        SpinnerNumberModel numberModel = new SpinnerNumberModel(1, 1,
+                SolveRequestsGUI.requestList.size() > 0 ? SolveRequestsGUI.requestList.size() : 1,
+                1);
+        JSpinner spinner = new JSpinner(numberModel);
+        JButton solveRequest = new JButton("Mark request as solved");
+        JButton denyRequest = new JButton("Mark request as denied");
+        solveRequestFlow.add(spinner);
+        solveRequestFlow.add(solveRequest);
+        solveRequestFlow.add(denyRequest);
+
+        if (SolveRequestsGUI.requestList.size() == 0) {
+            solveRequest.setEnabled(false);
+            denyRequest.setEnabled(false);
+            spinner.setEnabled(false);
+        }
+
+        if (SolveRequestsGUI.requestList.size() > 0) {
+            solveRequest.setEnabled(true);
+            denyRequest.setEnabled(true);
+            spinner.setEnabled(true);
+        }
+
+        solveRequest.addActionListener(e -> {
+            int index = (int) spinner.getValue();
+            index--;
+
+            Request request = SolveRequestsGUI.requestList.get(index);
+            ((Staff)LoggedUser.currentUser).solveRequest(request);
+            SolveRequestsGUI.requestList.remove(request);
+
+            if (SolveRequestsGUI.requestList.size() == 0) {
+                spinner.setEnabled(false);
+                solveRequest.setEnabled(false);
+                denyRequest.setEnabled(false);
+            }
+
+            if (SolveRequestsGUI.requestList.size() > 0) {
+                spinner.setEnabled(true);
+                solveRequest.setEnabled(true);
+                denyRequest.setEnabled(true);
+            }
+
+            spinner.setValue(1);
+            numberModel.setMaximum(SolveRequestsGUI.requestList.size() > 0 ?
+                    SolveRequestsGUI.requestList.size() : 1);
+        });
+
+        denyRequest.addActionListener(e -> {
+            int index = (int) spinner.getValue();
+            index--;
+
+            Request request = SolveRequestsGUI.requestList.get(index);
+            ((Staff)LoggedUser.currentUser).denyRequest(request);
+            SolveRequestsGUI.requestList.remove(request);
+
+            if (SolveRequestsGUI.requestList.size() == 0) {
+                spinner.setEnabled(false);
+                solveRequest.setEnabled(false);
+                denyRequest.setEnabled(false);
+            }
+
+            if (SolveRequestsGUI.requestList.size() > 0) {
+                spinner.setEnabled(true);
+                solveRequest.setEnabled(true);
+                denyRequest.setEnabled(true);
+            }
+
+            spinner.setValue(1);
+            numberModel.setMaximum(SolveRequestsGUI.requestList.size() > 0 ?
+                    SolveRequestsGUI.requestList.size() : 1);
+        });
+
         setLayout(new GridLayout(3, 1));
         add(listRequestsFlow);
+        add(solveRequestFlow);
 
         setSize(600, 400);
         setVisible(true);

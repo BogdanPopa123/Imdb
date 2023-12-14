@@ -148,6 +148,7 @@ public abstract class Staff extends User implements StaffInterface{
                 production.setDescription(p.getDescription());
                 production.setDirectors(p.getDirectors());
                 production.setGenres(p.getGenres());
+                production.setImageUrl(p.getImageUrl());
 
                 if (p instanceof Movie) {
                     Movie movie = (Movie) production;
@@ -170,6 +171,7 @@ public abstract class Staff extends User implements StaffInterface{
             if (actor.getName().equals(a.getName())) {
                 actor.setBiography(a.getBiography());
                 actor.setPerformances(a.getPerformances());
+                actor.setImageUrl(a.getImageUrl());
             }
         }
     }
