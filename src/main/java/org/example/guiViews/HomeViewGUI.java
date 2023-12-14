@@ -506,6 +506,26 @@ public class HomeViewGUI extends JFrame {
             gbc.fill = GridBagConstraints.VERTICAL;  // Fill vertically
             dialog.add(photoLabel, gbc);
 
+            // Button Panel under the image
+            JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JButton trailerButton = new JButton("Watch trailer");
+
+            if (!(HomeView.fetch(textField.getText().trim()) instanceof Production)) {
+                trailerButton.setEnabled(false);
+            } else {
+                trailerButton.setEnabled(true);
+            }
+
+            trailerButton.addActionListener(e -> {
+                //TODO add trailer view
+            });
+
+            buttonPanel.add(trailerButton);
+
+            gbc.gridx = 1;
+            gbc.gridy = 2;
+            dialog.add(buttonPanel, gbc);
+
             // Repaint the dialog to reflect the changes
             dialog.revalidate();
             dialog.repaint();
