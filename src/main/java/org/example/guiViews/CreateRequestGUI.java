@@ -254,6 +254,7 @@ public class CreateRequestGUI extends JFrame {
             sb.append("    " + index + ") Created at: " +
                     request.getCreationTime().toString() +
                     "\n    Type: " + request.getRequestType().toString() +
+                    "\n    Subject: " + request.getSubject() +
                     "\n    Description: " +
                     request.getDescription() + "\n");
         }

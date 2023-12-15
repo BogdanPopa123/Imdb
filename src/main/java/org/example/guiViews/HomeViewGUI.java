@@ -509,16 +509,15 @@ public class HomeViewGUI extends JFrame {
             gbc.fill = GridBagConstraints.VERTICAL;  // Fill vertically
             dialog.add(photoLabel, gbc);
 
-            // Button Panel under the image
+            // Button Panel
             JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton trailerButton = new JButton("Watch trailer");
+            JButton trailerButton = new JButton("Watch Trailer");
 
             Object fetched = HomeView.fetch(textField.getText().trim());
             String trailerUrl = null;
             if (!(fetched instanceof Production)) {
                 trailerButton.setEnabled(false);
             } else {
-//                trailerButton.setEnabled(true);
                 Production production = (Production) fetched;
                 trailerUrl = TrailersMap.urlMap.get(production.getTitle());
                 if (trailerUrl == null || trailerUrl.equals("")) {
@@ -530,13 +529,31 @@ public class HomeViewGUI extends JFrame {
 
             final String finalTrailerUrl = trailerUrl;
 
+            // ActionListener for Watch Trailer Button
             trailerButton.addActionListener(e -> {
-//                new WatchTrailerView("https://www.youtube.com/watch?v=XrGPh9nxK_E&ab_channel=FlorinMitroiOficial");
                 openWebPage(finalTrailerUrl);
             });
 
+            // Add Watch Trailer Button to Button Panel
             buttonPanel.add(trailerButton);
 
+            // Add another button (e.g., "Another Button")
+            JButton ratingButton = new JButton("Add Request");
+            ratingButton.addActionListener(e -> {
+                new AutomatedRequestGUI(fetched);
+            });
+            if (fetched == null) {
+                ratingButton.setEnabled(false);
+            } else {
+                ratingButton.setEnabled(true);
+            }
+
+            if (LoggedUser.currentUser instanceof Regular
+                || LoggedUser.currentUser instanceof Contributor){
+                buttonPanel.add(ratingButton);
+            }
+
+            // Add Button Panel to Dialog
             gbc.gridx = 1;
             gbc.gridy = 2;
             dialog.add(buttonPanel, gbc);
