@@ -95,6 +95,13 @@ public class UpdateSeriesGUI extends JFrame {
         urlFlow.add(urlLabel);
         urlFlow.add(urlTextField);
 
+        JPanel trailerUrlFlow = new JPanel(new FlowLayout());
+        JLabel trailerUrlLabel = new JLabel("trailer Url");
+        JTextField trailerUrlTextField = new JTextField();
+        trailerUrlTextField.setColumns(15);
+        trailerUrlFlow.add(trailerUrlLabel);
+        trailerUrlFlow.add(trailerUrlTextField);
+
         JPanel releaseYearFlow = new JPanel(new FlowLayout());
         JLabel releaseYearLabel = new JLabel("Release year");
         SpinnerNumberModel numberModelReleaseYear = new SpinnerNumberModel(2010, 1900,
@@ -134,6 +141,7 @@ public class UpdateSeriesGUI extends JFrame {
             Series oldSeries = (Series) fetched;
             String newBio = null;
             String newUrl = null;
+            String newTrailerUrl = null;
 
             if (bioTextArea.getText() != null && !bioTextArea.getText().trim().equals("")) {
                 newBio = bioTextArea.getText().trim();
@@ -146,6 +154,13 @@ public class UpdateSeriesGUI extends JFrame {
                 newUrl = urlTextField.getText().trim();
             } else {
                 newUrl = oldSeries.getImageUrl();
+            }
+
+            if (trailerUrlTextField.getText() != null && !trailerUrlTextField.getText().trim().equals("")
+                    && AddSeriesGUI.checkUrlString(trailerUrlTextField.getText().trim())){
+                newTrailerUrl = trailerUrlTextField.getText().trim();
+            } else {
+                newTrailerUrl = TrailersMap.urlMap.get(oldSeries.getTitle());
             }
 
             List<String> newDirectors = null;
@@ -191,19 +206,21 @@ public class UpdateSeriesGUI extends JFrame {
                     newUrl, newReleaseYear, newSeasonEpisodes);
 
             ((Staff) LoggedUser.currentUser).updateProductionSystem(newSeries);
+            TrailersMap.urlMap.put(oldSeries.getTitle(), newTrailerUrl);
             updateSeriesLabel.setText("Series " + title + " updated successfully");
 
         });
         updateSeriesFlow.add(updateSeriesLabel);
         updateSeriesFlow.add(updateSeriesButton);
 
-        setLayout(new GridLayout(9, 1));
+        setLayout(new GridLayout(10, 1));
         add(titleFlow);
         add(numDirectorsFlow);
         add(numActorsFlow);
         add(genresFlow);
         add(bioFlow);
         add(urlFlow);
+        add(trailerUrlFlow);
         add(releaseYearFlow);
         add(addSeasonNumbersFlow);
         add(updateSeriesFlow);

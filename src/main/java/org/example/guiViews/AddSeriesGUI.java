@@ -83,6 +83,13 @@ public class AddSeriesGUI extends JFrame {
         urlFlow.add(urlLabel);
         urlFlow.add(urlTextField);
 
+        JPanel trailerUrlFlow = new JPanel(new FlowLayout());
+        JLabel trailerUrlLabel = new JLabel("trailer Url");
+        JTextField trailerUrlTextField = new JTextField();
+        trailerUrlTextField.setColumns(15);
+        trailerUrlFlow.add(trailerUrlLabel);
+        trailerUrlFlow.add(trailerUrlTextField);
+
         JPanel releaseYearFlow = new JPanel(new FlowLayout());
         JLabel releaseYearLabel = new JLabel("Release year");
         SpinnerNumberModel numberModelReleaseYear = new SpinnerNumberModel(2010, 1900,
@@ -118,7 +125,9 @@ public class AddSeriesGUI extends JFrame {
             && !bioTextArea.getText().trim().equals("")
             && urlTextField.getText() != null && !urlTextField.getText().trim().equals("")
             && series.getSeasonEpisodes().size() > 0
-            && checkUrlString(urlTextField.getText().trim())){
+            && trailerUrlTextField.getText() != null && !trailerUrlTextField.getText().trim().equals("")
+            && checkUrlString(urlTextField.getText().trim())
+            && checkUrlString(trailerUrlTextField.getText().trim())) {
 
                 series.setTitle(titleTextField.getText());
                 series.setDescription(bioTextArea.getText());
@@ -131,6 +140,8 @@ public class AddSeriesGUI extends JFrame {
                 if (fetchResult == null) {
                     addSeriesLabel.setText("Series added successfully");
                     ((Staff)LoggedUser.currentUser).addProductionSystem(series);
+                    TrailersMap.urlMap.put(series.getTitle(),
+                            trailerUrlTextField.getText().trim());
                 } else {
                     Series fetchedResultSeries = (Series) fetchResult;
                     addSeriesLabel.setText("Series " + fetchedResultSeries.getTitle()
@@ -146,13 +157,14 @@ public class AddSeriesGUI extends JFrame {
         addSeriesFlow.add(addSeriesButton);
 
 
-        setLayout(new GridLayout(9, 1));
+        setLayout(new GridLayout(10, 1));
         add(titleFlow);
         add(numDirectorsFlow);
         add(numActorsFlow);
         add(genresFlow);
         add(bioFlow);
         add(urlFlow);
+        add(trailerUrlFlow);
         add(releaseYearFlow);
         add(addSeasonNumbersFlow);
         add(addSeriesFlow);

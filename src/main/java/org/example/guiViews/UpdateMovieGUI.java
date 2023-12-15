@@ -3,6 +3,7 @@ package org.example.guiViews;
 import org.example.LoggedUser;
 import org.example.Movie;
 import org.example.Staff;
+import org.example.TrailersMap;
 import org.example.cliViews.HomeView;
 import org.example.enums.Genre;
 
@@ -92,6 +93,13 @@ public class UpdateMovieGUI extends JFrame {
         urlFlow.add(urlLabel);
         urlFlow.add(urlTextField);
 
+        JPanel trailerUrlFlow = new JPanel(new FlowLayout());
+        JLabel trailerUrlLabel = new JLabel("trailer Url");
+        JTextField trailerUrlTextField = new JTextField();
+        trailerUrlTextField.setColumns(15);
+        trailerUrlFlow.add(trailerUrlLabel);
+        trailerUrlFlow.add(trailerUrlTextField);
+
         JPanel numMinutesFlow = new JPanel(new FlowLayout());
         JLabel numMinutesLabel = new JLabel("Number of minutes");
         SpinnerNumberModel numberModelMinutes = new SpinnerNumberModel(1, 1,
@@ -125,6 +133,7 @@ public class UpdateMovieGUI extends JFrame {
             Movie oldMovie = (Movie) fetched;
             String newBio = null;
             String newUrl = null;
+            String newTrailerUrl = null;
 
             if (bioTextArea.getText() != null && !bioTextArea.getText().trim().equals("")) {
                 newBio = bioTextArea.getText().trim();
@@ -137,6 +146,13 @@ public class UpdateMovieGUI extends JFrame {
                 newUrl = urlTextField.getText().trim();
             } else {
                 newUrl = oldMovie.getImageUrl();
+            }
+
+            if (trailerUrlTextField.getText() != null && !trailerUrlTextField.getText().trim().equals("")
+                && AddSeriesGUI.checkUrlString(trailerUrlTextField.getText().trim())){
+                newTrailerUrl = trailerUrlTextField.getText().trim();
+            } else {
+                newTrailerUrl = TrailersMap.urlMap.get(oldMovie.getTitle());
             }
 
             List<String> newDirectors = null;
@@ -177,6 +193,7 @@ public class UpdateMovieGUI extends JFrame {
                     newUrl, newRuntime, newReleaseYear);
 
             ((Staff) LoggedUser.currentUser).updateProductionSystem(newMovie);
+            TrailersMap.urlMap.put(oldMovie.getTitle(), newTrailerUrl);
             updateMoveLabel.setText("Movie " + title + " updated successfully");
 
         });
@@ -184,13 +201,14 @@ public class UpdateMovieGUI extends JFrame {
         updateMovieFlow.add(updateMovieButton);
 
 
-        setLayout(new GridLayout(9, 1));
+        setLayout(new GridLayout(10, 1));
         add(titleFlow);
         add(numDirectorsFlow);
         add(numActorsFlow);
         add(genresFlow);
         add(bioFlow);
         add(urlFlow);
+        add(trailerUrlFlow);
         add(numMinutesFlow);
         add(releaseYearFlow);
         add(updateMovieFlow);

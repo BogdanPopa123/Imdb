@@ -83,6 +83,13 @@ public class AddMovieGUI extends JFrame {
         urlFlow.add(urlLabel);
         urlFlow.add(urlTextField);
 
+        JPanel trailerUrlFlow = new JPanel(new FlowLayout());
+        JLabel trailerUrlLabel = new JLabel("trailer Url");
+        JTextField trailerUrlTextField = new JTextField();
+        trailerUrlTextField.setColumns(15);
+        trailerUrlFlow.add(trailerUrlLabel);
+        trailerUrlFlow.add(trailerUrlTextField);
+
         JPanel numMinutesFlow = new JPanel(new FlowLayout());
         JLabel numMinutesLabel = new JLabel("Number of minutes");
         SpinnerNumberModel numberModelMinutes = new SpinnerNumberModel(1, 1,
@@ -110,7 +117,9 @@ public class AddMovieGUI extends JFrame {
             && movie.getGenres().size() > 0 && bioTextArea.getText() != null
             && !bioTextArea.getText().trim().equals("") && urlTextField.getText() != null
             && !urlTextField.getText().trim().equals("")
-            && AddSeriesGUI.checkUrlString(urlTextField.getText().trim())) {
+            && trailerUrlTextField.getText() != null && !trailerUrlTextField.getText().trim().equals("")
+            && AddSeriesGUI.checkUrlString(urlTextField.getText().trim())
+            && AddSeriesGUI.checkUrlString(trailerUrlTextField.getText().trim())) {
 
                 movie.setTitle(titleTextField.getText());
                 movie.setDescription(bioTextArea.getText());
@@ -125,6 +134,8 @@ public class AddMovieGUI extends JFrame {
                 if (fetchResult == null) {
                     addMoveLabel.setText("Movie added successfully");
                     ((Staff)LoggedUser.currentUser).addProductionSystem(movie);
+                    TrailersMap.urlMap.put(movie.getTitle(),
+                            trailerUrlTextField.getText().trim());
                 } else {
                     Movie fetchResultMovie = (Movie) fetchResult;
                     addMoveLabel.setText("Movie " + fetchResultMovie.getTitle()
@@ -141,13 +152,14 @@ public class AddMovieGUI extends JFrame {
         addMovieFlow.add(addMovieButton);
 
 
-        setLayout(new GridLayout(9, 1));
+        setLayout(new GridLayout(10, 1));
         add(titleFlow);
         add(numDirectorsFlow);
         add(numActorsFlow);
         add(genresFlow);
         add(bioFlow);
         add(urlFlow);
+        add(trailerUrlFlow);
         add(numMinutesFlow);
         add(releaseYearFlow);
         add(addMovieFlow);
